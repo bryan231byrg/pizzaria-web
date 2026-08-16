@@ -1,0 +1,8 @@
+.logo {
+    width: 65px;
+
+    object-fit: contain;
+    display: block;
+
+    border-radius: 10px;
+}

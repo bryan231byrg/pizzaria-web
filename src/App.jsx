@@ -1,17 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Home from "./assets/pages/Client/Home";
-import Cardapio from "./assets/pages/Client/Cardapio";
-import Produto from "./assets/pages/Client/Produto";
-import Carrinho from "./assets/pages/Client/Carrinho";
-import FinalizarPedido from "./assets/pages/Client/FinalizarPedido";
+// Cliente (Publica)
+import Home from "./pages/Client/Home/";
+import Cardapio from "./pages/Client/Cardapio";
+import Produto from "./pages/Client/Produto";
+import Carrinho from "./pages/Client/Carrinho";
+import FinalizarPedido from "./pages/Client/FinalizarPedido";
 
-import Dashboard from "./assets/pages/admin/Dashboard";
-import Produtos from "./assets/pages/admin/Produtos";
-import NovoProduto from "./assets/pages/admin/NovoProduto";
-import EditarProduto from "./assets/pages/admin/EditarProduto";
-import Categorias from "./assets/pages/admin/Categorias";
-import Configuracoes from "./assets/pages/admin/Configuracoes";
+// Administrador (Privado)
+import Dashboard from "./pages/admin/Dashboard/";
+import Produtos from "./pages/admin/Produtos/";
+import NovoProduto from "./pages/admin/NovoProduto/";
+import EditarProduto from "./pages/admin/EditarProduto/";
+import Categorias from "./pages/admin/Categorias/";
+import Configuracoes from "./pages/admin/Configuracoes/";
 
 function App() {
   return (
@@ -23,7 +25,7 @@ function App() {
         <Route path="/cardapio" element={<Cardapio />} />
         <Route path="/produto/:id" element={<Produto />} />
         <Route path="/carrinho" element={<Carrinho />} />
-        <Route path="/finalizar-pedido" element={<FinalizarPedido />} />
+        <Route path="/finalizarpedido" element={<FinalizarPedido />} />
 
         {/* Rota Privada (Adminitrador) */}
         <Route path="/admin" element={<Dashboard />} />
