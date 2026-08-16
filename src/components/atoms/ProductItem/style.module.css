@@ -1,42 +1,102 @@
 .card {
-    width: 250px;
-    padding: 16px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    border: 1px solid #ddd;
-    border-radius: 10px;
-
-    background-color: #fff;
+  width: 100%;
+  max-width: 325px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  background-color: #ffffff;
+  border: 1px solid #e9e9e9;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+/* IMAGEM */
 .image {
-    width: 100%;
-    height: 200px;
+  width: 100%;
+  height: 220px;
+  display: block;
+  object-fit: cover;
+}
 
-    object-fit: cover;
-    border-radius: 8px;
+.info {
+  padding: 16px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .info h2 {
-    margin: 0;
-    font-size: 20px;
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: #171717;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .info p {
-    margin: 8px 0 0;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #16852d;
+}
 
-    font-size: 18px;
-    font-weight: 700;
+/* BOTÕES */
+.actions {
+  padding: 12px 16px 16px;
+  display: flex;
+  gap: 12px;
 }
 
 .btnItem {
-    padding: 8px 12px;
+  flex: 1;
+  height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
 
-    border: none;
-    border-radius: 6px;
+.btnItem:hover {
+  transform: translateY(-1px);
+}
 
-    cursor: pointer;
+.btnItem:active {
+  transform: translateY(0);
+}
+
+.btnEdit {
+  background-color: #f5f5f5;
+  color: #171717;
+}
+
+.btnEdit:hover {
+  background-color: #c3c1c1;
+}
+
+.btnDelete {
+  background-color: #ffe3e3;
+  color: #e32626;
+}
+
+.btnDelete:hover {
+  background-color: #f9b1b1;
 }

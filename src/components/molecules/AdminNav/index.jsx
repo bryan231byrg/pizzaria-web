@@ -6,8 +6,6 @@ export default function AdminNav() {
       <ul>
         <AdminItemNav to={"/admin"}>Dashboard</AdminItemNav>
         <AdminItemNav to={"/admin/produtos"}>Produtos</AdminItemNav>
-        <AdminItemNav to={"/admin/produtos/novo"}>Cadastrar Produtos</AdminItemNav>
-        <AdminItemNav to={"/admin/produtos/1/editar"}>Editar Produtos</AdminItemNav>
         <AdminItemNav to={"/admin/categorias"}>Categorias</AdminItemNav>
         <AdminItemNav to={"/admin/configuracoes"}>Configurações</AdminItemNav>
         <AdminItemNav to={"/"}>Cliente</AdminItemNav>

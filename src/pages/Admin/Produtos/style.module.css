@@ -1,0 +1,20 @@
+.Meio {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 10px;
+    padding: 32px 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background-color: rgb(255, 248, 248);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+}
+
+.Meio h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    color: #171717;
+}

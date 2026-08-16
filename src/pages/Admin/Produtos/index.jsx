@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import AdminHeader from "../../../components/organism/AdminHeader/";
 import StyleProducts from "./style.module.css";
@@ -12,7 +11,7 @@ export default function Produtos() {
 
   useEffect(() => {
     const productsSaveds = localStorage.getItem("products");
-    console.log(productsSaveds);
+
     if (productsSaveds) {
       setProducts(JSON.parse(productsSaveds));
     }
@@ -20,24 +19,29 @@ export default function Produtos() {
 
   useEffect(() => {
     if (products.length > 0) {
-      localStorage.setItem("products", JSON.stringify(products));
+      localStorage.setItem(
+        "products",
+        JSON.stringify(products)
+      );
     }
   }, [products]);
 
   return (
     <>
-      <AdminHeader></AdminHeader>
-      <main className={StyleProducts.Meio}>
-        <h1>Pagina dos produtos (Adm)</h1>
+      <AdminHeader />
 
-        <ProductForm 
-        products={products} 
-        setProducts={setProducts} />
+      <main>
+        <div className={StyleProducts.Meio}>
+          <ProductForm
+            products={products}
+            setProducts={setProducts}
+          />
+        </div>
 
-        <ProductList 
-        products={products} 
-        setProducts={setProducts} />
-
+        <ProductList
+          products={products}
+          setProducts={setProducts}
+        />
       </main>
     </>
   );
