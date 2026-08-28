@@ -1,19 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    /* Cores principais */
+    --color-primary: #B52B2B;
+    --color-primary-dark: #7F1D1D;
+    --color-accent: #E5A23C;
+
+    /* Fundos */
+    --color-background: #FFF8EC;
+    --color-surface: #FFFFFF;
+    --color-dark: #181818;
+
+    /* Textos */
+    --color-text: #181818;
+    --color-text-secondary: #666666;
+    --color-text-light: #FFFFFF;
+
+    /* Bordas e sombras */
+    --color-border: #E8DED0;
+    --shadow-sm: 0 4px 12px rgba(24, 24, 24, 0.08);
+    --shadow-md: 0 8px 24px rgba(24, 24, 24, 0.12);
+
+    /* Bordas */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+
+    /* Transições */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html,
-body {
+html{
     width: 100%;
     min-height: 100%;
+    scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #111;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--color-background);
+    color:var(--color-text);
+    line-height: 1.6;
+}
+
+/* Títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.2;
 }
 
 a {
@@ -26,4 +71,15 @@ input,
 textarea,
 select {
     font: inherit;
+}
+
+/* Imagens */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* Botões */
+button {
+    cursor: pointer;
 }

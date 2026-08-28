@@ -1,9 +1,10 @@
 import ClientItemNav from "../../atoms/ClientItemNav";
+import StyleClientNav from "./style.module.css";
 
 export default function ClientNav() {
   return (
-    <>
-      <ul>
+    <nav className={StyleClientNav.nav}>
+      <ul className={StyleClientNav.navList}>
         <ClientItemNav to={"/"}>Ínicio</ClientItemNav>
         <ClientItemNav to={"/cardapio"}>Cardapio</ClientItemNav>
         <ClientItemNav to={"/carrinho"}>Carrinho</ClientItemNav>
@@ -12,6 +13,6 @@ export default function ClientNav() {
         <ClientItemNav to={"/admin"}>Administrador</ClientItemNav>
         
       </ul>
-    </>
+    </nav>
   );
 }

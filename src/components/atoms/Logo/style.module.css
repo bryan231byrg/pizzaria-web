@@ -1,8 +1,17 @@
 .logo {
     width: 65px;
+    height: 68px;
 
-    object-fit: contain;
+    object-fit: cover;
     display: block;
 
-    border-radius: 10px;
+    border-radius: 50%;
+    
+    border: 2px solid var(--color-accent);
+
+    transition: var(--transition-normal);
+}
+
+.logo:hover {
+    transform: scale(1.05);
 }

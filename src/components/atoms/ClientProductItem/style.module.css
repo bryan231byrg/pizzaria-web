@@ -1,0 +1,103 @@
+.card {
+    width: 100%;
+    overflow: hidden;
+
+    background-color: var(--color-surface);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-sm);
+
+    transition: var(--transition-normal);
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
+}
+
+.imageContainer {
+    width: 100%;
+    height: 230px;
+
+    overflow: hidden;
+
+    background-color: #f3eadc;
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+    transform: scale(1.06);
+}
+
+.info {
+    padding: 20px;
+}
+
+.info h2 {
+    margin-bottom: 10px;
+
+    color: var(--color-dark);
+
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.price {
+    margin-bottom: 18px;
+
+    color: var(--color-primary);
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.button {
+    width: 100%;
+    min-height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: none;
+    border-radius: var(--radius-sm);
+
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: var(--transition-normal);
+}
+
+.button span {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.button:hover {
+    background-color: var(--color-primary-dark);
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow-sm);
+}
+
+.button:active {
+    transform: scale(0.98);
+}

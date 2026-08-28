@@ -1,15 +1,21 @@
 .header {
     width: 100%;
-    height: 70px;
+    min-height: 82px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    padding: 0 40px;
+    padding: 0 5%;
 
-    background-color: #111;
-    border-bottom: 1px solid #2a2a2a;
+    background-color: var(--color-dark);
+
+    border-bottom: 1px solid rgba (229,162,60,0.25);
+
+    position: relative;
+    z-index: 100;
+
+    box-shadow: var(--shadow-sm);
 }
 
 .header ul {

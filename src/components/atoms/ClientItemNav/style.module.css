@@ -1,0 +1,45 @@
+.item {
+    list-style: none;
+}
+
+.link {
+    position: relative;
+
+    display: inline-block;
+
+    padding: 8px 0;
+
+    color: var(--color-text-light);
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition: var(--transition-normal);
+}
+
+.link::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background-color: var(--color-accent);
+
+    transform: scaleX(0);
+    transform-origin: center;
+
+    transition: var(--transition-normal);
+}
+
+.link:hover {
+    color: var(--color-accent);
+}
+
+.link:hover::after {
+    transform: scaleX(1);
+}
