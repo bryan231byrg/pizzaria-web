@@ -1,14 +1,14 @@
-import AdminItemNav from "../../atoms/AdminItemNav";
+import ItemNav from "../../atoms/ItemNav";
 
 export default function AdminNav() {
   return (
     <>
       <ul>
-        <AdminItemNav to={"/admin"}>Dashboard</AdminItemNav>
-        <AdminItemNav to={"/admin/produtos"}>Produtos</AdminItemNav>
-        <AdminItemNav to={"/admin/categorias"}>Categorias</AdminItemNav>
-        <AdminItemNav to={"/admin/configuracoes"}>Configurações</AdminItemNav>
-        <AdminItemNav to={"/"}>Cliente</AdminItemNav>
+        <ItemNav to={"/admin"}>Dashboard</ItemNav>
+        <ItemNav to={"/admin/produtos"}>Produtos</ItemNav>
+        <ItemNav to={"/admin/categorias"}>Categorias</ItemNav>
+        <ItemNav to={"/admin/configuracoes"}>Configurações</ItemNav>
+        <ItemNav to={"/"}>Cliente</ItemNav>
       </ul>
     </>
   );

@@ -1,9 +1,9 @@
-import AdminHeader from "../../../components/organism/AdminHeader/"
+import Header from "../../../components/organism/Header/"
 export default function Dashboard(){
 
     return(
         <>
-        <AdminHeader></AdminHeader>
+        <Header></Header>
         <h1>Pagina do Dashboard</h1>
         </>
     )

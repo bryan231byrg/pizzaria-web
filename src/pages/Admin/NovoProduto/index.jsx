@@ -1,9 +1,9 @@
-import AdminHeader from "../../../components/organism/AdminHeader/"
+import Header from "../../../components/organism/Header/"
 export default function NovoProduto(){
 
     return(
         <>
-        <AdminHeader></AdminHeader>
+        <Header></Header>
         <h1>Pagina de cadastro de produtos</h1>
         </>
     )
