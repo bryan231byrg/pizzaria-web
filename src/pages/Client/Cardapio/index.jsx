@@ -1,41 +1,42 @@
 import Header from "../../../components/organism/Header";
-import ClientProductItem from "../../../components/atoms/ClientProductItem";
+import ProductList from "../../../components/molecules/ProductList";
 import StyleCardapio from "./style.module.css";
 
-export default function Cardapio() {
+import { useState, useEffect } from "react";
 
-    const product = {
-        id: 1,
-        nome: "Pizza Calabresa",
-        preco: "39.90",
-        url: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002"
-    };
+export default function Cardapio() {
+    
+    const [products, setProducts] = useState([]);
+    
+        useEffect(() => {
+            const productsSaveds = localStorage.getItem("products");
+        
+            if (productsSaveds) {
+            setProducts(JSON.parse(productsSaveds));}
+        }, []);
+    
+        useEffect(() => {
+            if (products.length > 0) {
+            localStorage.setItem("products", JSON.stringify(products));}}, [products]);
 
     return (
         <>
             <Header />
-
             <main className={StyleCardapio.container}>
-
                 <section className={StyleCardapio.intro}>
-
+                    
                     <span>🍕 NOSSO CARDÁPIO</span>
 
-                    <h1>
-                        Escolha sua pizza favorita
-                    </h1>
+                    <h1> Escolha sua pizza favorita </h1>
 
-                    <p>
-                        Sabores preparados com ingredientes selecionados
-                        para deixar seu pedido ainda mais especial.
-                    </p>
+                    <p> Sabores preparados com ingredientes selecionados para deixar seu pedido ainda mais especial. </p>
 
                 </section>
-
                 <section className={StyleCardapio.products}>
-
-                    <ClientProductItem product={product} />
-
+                    <ProductList 
+                    products={products}
+                    setProducts={setProducts}
+                    />
                 </section>
 
             </main>
