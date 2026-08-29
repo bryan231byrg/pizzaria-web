@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import AdminHeader from "../../../components/organism/AdminHeader/";
+import Header from "../../../components/organism/Header/";
 import StyleProducts from "./style.module.css";
 
 import ProductForm from "../../../components/organism/ProductForm";
@@ -28,7 +28,7 @@ export default function Produtos() {
 
   return (
     <>
-      <AdminHeader />
+      <Header />
 
       <main>
         <div className={StyleProducts.Meio}>

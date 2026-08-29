@@ -1,11 +1,11 @@
-import ClientHeader from "../../../components/organism/ClientHeader"
+import Header from "../../../components/organism/Header"
 
 export default function Produto(){
 
     return(
         <>
-        <ClientHeader></ClientHeader>
-        <h1>Pagina de Produto(cliente)</h1>
+        <Header></Header>
+        <h1>Pagina de Produto(e)</h1>
         </>
     )
 }

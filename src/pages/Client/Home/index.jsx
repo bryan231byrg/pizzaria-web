@@ -1,11 +1,11 @@
-import ClientHeader from "../../../components/organism/ClientHeader"
+import Header from "../../../components/organism/Header"
 import StyleHome from "./style.module.css";
 
 export default function Home(){
 
     return(
         <>
-        <ClientHeader />
+        <Header />
         <main>
             <section className={StyleHome.hero}>
 

@@ -1,4 +1,4 @@
-import ClientHeader from "../../../components/organism/ClientHeader";
+import Header from "../../../components/organism/Header";
 import ClientProductItem from "../../../components/atoms/ClientProductItem";
 import StyleCardapio from "./style.module.css";
 
@@ -13,7 +13,7 @@ export default function Cardapio() {
 
     return (
         <>
-            <ClientHeader />
+            <Header />
 
             <main className={StyleCardapio.container}>
 

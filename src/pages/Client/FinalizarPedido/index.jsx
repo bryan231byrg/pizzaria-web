@@ -1,10 +1,10 @@
-import ClientHeader from "../../../components/organism/ClientHeader"
+import Header from "../../../components/organism/Header"
 
 export default function FinalizarPedido(){
 
     return(
         <>
-        <ClientHeader></ClientHeader>
+        <Header></Header>
         <h1>Pagina para finalizar o pedido</h1>
         </>
     )
