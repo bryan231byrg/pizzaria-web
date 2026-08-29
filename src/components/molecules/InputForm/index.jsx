@@ -1,4 +1,4 @@
-function InputForm({ legend, type, value, onChange }) {
+function InputForm({ legend, type, value, onChange, maxLength }) {
 
     return (
 
@@ -9,6 +9,7 @@ function InputForm({ legend, type, value, onChange }) {
             <input
                 type={type}
                 id={`ipt-${legend}`}
+                maxLength={maxLength}
                 value={value}
                 onChange={onChange}
             />

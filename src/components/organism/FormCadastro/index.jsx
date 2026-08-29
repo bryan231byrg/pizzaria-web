@@ -1,21 +1,24 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import InputForm from "../../molecules/inputForm";
-import StyleLoginForm from "./style.module.css";
+import InputForm from "../../../components/molecules/inputForm";
+import StyleCadastroForm from "./style.module.css";
 
-function FormLogin({ onSubmit }) {
+function FormCadastro({ onSubmit }) {
 
     const [telefone, setTelefone] = useState("");
+    const [nome, setNome] = useState("");
     const [senha, setSenha] = useState("");
+
     const [mensagem, setMensagem] = useState("");
+
 
     return (
         <form
-            className={StyleLoginForm.form}
+            className={StyleCadastroForm.form}
             onSubmit={(e) => {
                 e.preventDefault();
 
-                if (telefone.trim() === "" || senha.trim() === "") {
+                if (telefone.trim() === "" || senha.trim() === "" || nome.trim() === "") {
                     setMensagem("Preencha todos os campos.");
                     return;
                 }
@@ -25,9 +28,9 @@ function FormLogin({ onSubmit }) {
             }}
         >
 
-            <div className={StyleLoginForm.fields}>
+            <div className={StyleCadastroForm.fields}>
                 <InputForm
-                    legend="Telefone"
+                    legend="Telefone *"
                     type="tel"
                     maxLength={11}
                     value={telefone}
@@ -35,7 +38,14 @@ function FormLogin({ onSubmit }) {
                 />
 
                 <InputForm
-                    legend="Senha"
+                    legend="Seu Nome *"
+                    type="text"
+                    value={nome}
+                    onChange={(e) => setNome(e.target.value)}
+                />
+
+                <InputForm
+                    legend="Senha *"
                     type="password"
                     value={senha}
                     onChange={(e) => setSenha(e.target.value)}
@@ -43,25 +53,26 @@ function FormLogin({ onSubmit }) {
 
             </div>
 
-            <div className={StyleLoginForm.actions}>
-                <div className={StyleLoginForm.buttons}>
+            <div className={StyleCadastroForm.actions}>
+                <div className={StyleCadastroForm.buttons}>
                     <button type="submit">
                         Entrar
                     </button>
                 </div>
 
-                <div className={StyleLoginForm.anchor}>
-                    <Link to="/cadastro">
-                        Não tem uma conta?
+                <div className={StyleCadastroForm.anchor}>
+                    <Link to="/login">
+                        Já tem uma conta?
                     </Link>
                 </div>
 
             </div>
-            <div className={StyleLoginForm.mensage}>
+            <div className={StyleCadastroForm.mensage}>
                 <p>{mensagem}</p>
             </div>
             
         </form>
     );
 }
-export default FormLogin;
+
+export default FormCadastro
