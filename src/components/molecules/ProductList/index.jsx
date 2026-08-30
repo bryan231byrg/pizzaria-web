@@ -1,10 +1,16 @@
 import StyleProductList from "./style.module.css";
 import ProductItem from "../../atoms/ProductItem";
 
-export default function ProductList({ products, setProducts }) {
+function ProductList({products, setProducts, categoria, }) 
+{
+  
+  const produtosFiltrados = products.filter(
+    (product) => product.categoria === categoria
+  );
+
   return (
     <section className={StyleProductList.list}>
-      {products.map((product) => {
+      {produtosFiltrados.map((product) => {
         return (
           <ProductItem
             key={product.id}
@@ -17,3 +23,5 @@ export default function ProductList({ products, setProducts }) {
     </section>
   );
 }
+
+export default ProductList

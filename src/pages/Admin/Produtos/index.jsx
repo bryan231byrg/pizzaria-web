@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import Cardapio from "../../Client/Cardapio/"
 
 import Header from "../../../components/organism/Header/";
 import StyleProducts from "./style.module.css";
 
 import ProductForm from "../../../components/organism/ProductForm";
-import ProductList from "../../../components/molecules/ProductList";
 
 export default function Produtos() {
   const [products, setProducts] = useState([]);
@@ -38,10 +38,7 @@ export default function Produtos() {
           />
         </div>
 
-        <ProductList
-          products={products}
-          setProducts={setProducts}
-        />
+      <Cardapio></Cardapio>
       </main>
     </>
   );

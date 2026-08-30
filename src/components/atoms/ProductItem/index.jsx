@@ -2,7 +2,6 @@ import StyleProductItem from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../Contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
     faTrash,
     faPen,
@@ -11,7 +10,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProductItem({ product, products, setProducts }) {
-
     const navigate = useNavigate();
     const { user } = useAuth();
 
@@ -19,8 +17,8 @@ export default function ProductItem({ product, products, setProducts }) {
         const productFiltered = products.filter(
             (p) => p.id !== product.id
         );
-        setProducts(productFiltered);
 
+        setProducts(productFiltered);
         localStorage.setItem("products", JSON.stringify(productFiltered));
     };
 
@@ -38,24 +36,21 @@ export default function ProductItem({ product, products, setProducts }) {
 
     return (
         <article className={StyleProductItem.card}>
-
             <img
-                src={product.url}
+                src={product.file}
                 alt={product.nome}
                 className={StyleProductItem.image}
             />
 
             <div className={StyleProductItem.info}>
                 <h2>{product.nome}</h2>
-                
                 <p>
-                    R$ {Number(product.preco).toFixed(2) .replace(".", ",")}
+                    R$ {Number(product.preco).toFixed(2).replace(".", ",")}
                 </p>
             </div>
 
             {user?.tipo === "admin" ? (
                 <div className={StyleProductItem.actions}>
-
                     <button
                         onClick={editProduct}
                         className={`${StyleProductItem.btnItem} ${StyleProductItem.btnEdit}`}
@@ -72,11 +67,8 @@ export default function ProductItem({ product, products, setProducts }) {
                         Remover
                     </button>
                 </div>
-                
             ) : (
-
                 <div className={StyleProductItem.actions}>
-
                     <button
                         onClick={addToCart}
                         className={`${StyleProductItem.btnItem} ${StyleProductItem.btnCart}`}
@@ -92,11 +84,8 @@ export default function ProductItem({ product, products, setProducts }) {
                         <FontAwesomeIcon icon={faBolt} />
                         Comprar agora
                     </button>
-
                 </div>
-
             )}
-
         </article>
     );
 }

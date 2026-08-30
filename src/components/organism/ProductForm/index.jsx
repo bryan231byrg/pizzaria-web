@@ -1,90 +1,112 @@
 import { useState } from "react";
+import InputForm from "../../molecules/InputForm/";
 import StyleProductForm from "./style.module.css";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProductForm({ products, setProducts }) {
-  const [nome, setNome] = useState("");
-  const [preco, setPreco] = useState("");
-  const [url, setUrl] = useState("");
+	const [nome, setNome] = useState("");
+	const [preco, setPreco] = useState("");
+	const [file, setFile] = useState(null);
+	const [categoria, setCategoria] = useState("");
 
-  const sendProduct = (e) => {
-    e.preventDefault();
+	const sendProduct = (e) => {
+		e.preventDefault();
 
-    if (nome.trim() === "" || preco.trim() === "" || url.trim() === "") {
-      return;
-    }
+		if (
+			nome.trim() === "" ||
+			preco.trim() === "" ||
+			!file ||
+			categoria === ""
+		) {
+			return;
+		}
 
-    const newProduct = {
-      id: Date.now(),
-      url: url,
-      nome: nome,
-      preco: preco,
-    };
+		const reader = new FileReader();
 
-    setProducts([...products, newProduct]);
+		reader.onloadend = () => {
+			const newProduct = {
+				id: Date.now(),
+				file: reader.result,
+				nome: nome,
+				preco: preco,
+				categoria: categoria,
+			};
 
-    setNome("");
-    setPreco("");
-    setUrl("");
-  };
+			setProducts([...products, newProduct]);
 
-  return (
-    <section className={StyleProductForm.container}>
-      <div className={StyleProductForm.header}>
-        <h4>Adicionar Produto</h4>
-        <p>Preencha os dados abaixo para adicionar um novo produto.</p>
-      </div>
+			setNome("");
+			setPreco("");
+			setFile(null);
+			setCategoria("");
+		};
 
-      <form className={StyleProductForm.form} onSubmit={sendProduct}>
-        <div className={StyleProductForm.field}>
-          <label htmlFor="url">URL da imagem do produto</label>
+		reader.readAsDataURL(file);
+	};
 
-          <input
-            id="url"
-            className={StyleProductForm.input}
-            type="url"
-            placeholder="Cole a URL da imagem do produto"
-            value={url}
-            onChange={(e) => setUrl(e.target.value)}
-            required
-          />
-        </div>
+	return (
+		<section className={StyleProductForm.container}>
+			<div className={StyleProductForm.header}>
+				<h4>Adicionar Produto</h4>
+				<p>Preencha os dados abaixo para adicionar um novo produto.</p>
+			</div>
 
-        <div className={StyleProductForm.field}>
-          <label htmlFor="nome">Nome do produto</label>
+			<form
+				className={StyleProductForm.form}
+				onSubmit={sendProduct}
+			>
+				<div className={StyleProductForm.inputs}>
+					<div className={StyleProductForm.input}>
+						<InputForm
+							legend="Nome do produto"
+							value={nome}
+							onChange={(e) => setNome(e.target.value)}
+						/>
+					</div>
 
-          <input
-            id="nome"
-            className={StyleProductForm.input}
-            type="text"
-            placeholder="Digite o nome do produto"
-            value={nome}
-            onChange={(e) => setNome(e.target.value)}
-            required
-          />
-        </div>
+					<div className={StyleProductForm.input}>
+						<InputForm
+							legend="Preço"
+							type="number"
+							value={preco}
+							onChange={(e) => setPreco(e.target.value)}
+						/>
+					</div>
 
-        <div className={StyleProductForm.field}>
-          <label htmlFor="preco">Preço do produto (R$)</label>
+					<div className={StyleProductForm.input}>
+						<label>Imagem do produto</label>
+						<input
+							type="file"
+							accept="image/*"
+							onChange={(e) => setFile(e.target.files[0])}
+						/>
+					</div>
 
-          <input
-            id="preco"
-            className={StyleProductForm.input}
-            type="text"
-            placeholder="Digite o preço"
-            value={preco}
-            onChange={(e) => setPreco(e.target.value)}
-            required
-          />
-        </div>
+					<div className={StyleProductForm.input}>
+						<label>Categoria</label>
+						<select
+							value={categoria}
+							onChange={(e) => setCategoria(e.target.value)} >
+							<option value="">Selecione uma categoria</option>
+							<option value="Destaques">Destaques</option>
+							<option value="Oferta Limitada">Oferta Limitada</option>
+							<option value="Promoções">Promoções</option>
+							<option value="Pizza Grande">Pizza Grande</option>
+							<option value="Pizza Pequena">Pizza Pequena</option>
+							<option value="Calzone Grande">Calzone Grande</option>
+							<option value="Bebidas">Bebidas</option>
+						</select>
+					</div>
+				</div>
 
-        <button type="submit" className={StyleProductForm.btnSubmit}>
-          <FontAwesomeIcon icon={faPizzaSlice} />
-          Adicionar Produto
-        </button>
-      </form>
-    </section>
-  );
+				<button
+					type="submit"
+					className={StyleProductForm.btnSubmit}
+				>
+					<FontAwesomeIcon icon={faPizzaSlice} />
+					Adicionar Produto
+				</button>
+			</form>
+		</section>
+	);
 }
