@@ -1,44 +1,132 @@
 import Header from "../../../components/organism/Header";
-import ClientProductItem from "../../../components/atoms/ClientProductItem";
+import ProductList from "../../../components/molecules/ProductList";
 import StyleCardapio from "./style.module.css";
+import { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import {
+	faStar,
+	faFire,
+	faTag,
+	faPizzaSlice,
+	faBottleWater
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function Cardapio() {
+	const [products, setProducts] = useState([]);
 
-    const product = {
-        id: 1,
-        nome: "Pizza Calabresa",
-        preco: "39.90",
-        url: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002"
-    };
+	useEffect(() => {
+		const productsSaveds = localStorage.getItem("products");
 
-    return (
-        <>
-            <Header />
+		if (productsSaveds) {
+			setProducts(JSON.parse(productsSaveds));
+		}
+	}, []);
 
-            <main className={StyleCardapio.container}>
+	return (
+		<>
+			<Header />
 
-                <section className={StyleCardapio.intro}>
+			<main className={StyleCardapio.container}>
+				<section className={StyleCardapio.intro}>
+					<span>
+						<FontAwesomeIcon icon={faPizzaSlice} /> NOSSO CARDÁPIO
+					</span>
 
-                    <span>🍕 NOSSO CARDÁPIO</span>
+					<h1>Escolha sua pizza favorita</h1>
 
-                    <h1>
-                        Escolha sua pizza favorita
-                    </h1>
+					<p>
+						Sabores preparados com ingredientes selecionados para deixar seu
+						pedido ainda mais especial.
+					</p>
+				</section>
 
-                    <p>
-                        Sabores preparados com ingredientes selecionados
-                        para deixar seu pedido ainda mais especial.
-                    </p>
+				<section className={StyleCardapio.categorias}>
+					<article className={StyleCardapio.destaques}>
+						<h4>
+							<FontAwesomeIcon icon={faStar} /> Destaques
+						</h4>
 
-                </section>
+						<ProductList
+							products={products}
+							setProducts={setProducts}
+							categoria="Destaques"
+						/>
+					</article>
 
-                <section className={StyleCardapio.products}>
+					<article className={StyleCardapio.OfertaLimitada}>
+						<h4>
+							<FontAwesomeIcon icon={faFire} /> Oferta LIMITADA
+						</h4>
 
-                    <ClientProductItem product={product} />
+						<ProductList
+							products={products}
+							setProducts={setProducts}
+							categoria="Oferta Limitada"
+						/>
+					</article>
 
-                </section>
+					<article className={StyleCardapio.promocoes}>
+						<h4>
+							<FontAwesomeIcon icon={faTag} /> Promoções do dia
+						</h4>
 
-            </main>
-        </>
-    );
+						<ProductList
+							products={products}
+							setProducts={setProducts}
+							categoria="Promoções"
+						/>
+					</article>
+
+					<article className={StyleCardapio.PizzasG}>
+						<h4>
+							<FontAwesomeIcon icon={faPizzaSlice} /> Pizzas | Grande
+						</h4>
+
+						<ProductList
+							products={products}
+							setProducts={setProducts}
+							categoria="Pizza Grande"
+						/>
+					</article>
+
+					<article className={StyleCardapio.PizzasP}>
+						<h4>
+							<FontAwesomeIcon icon={faPizzaSlice} /> Pizzas | Pequena
+						</h4>
+
+						<ProductList
+							products={products}
+							setProducts={setProducts}
+							categoria="Pizza Pequena"
+						/>
+					</article>
+
+					<article className={StyleCardapio.CalzonesG}>
+						<h4>
+							<FontAwesomeIcon icon={faPizzaSlice} /> Calzones | Grande
+						</h4>
+
+						<ProductList
+							products={products}
+							setProducts={setProducts}
+							categoria="Calzone Grande"
+						/>
+					</article>
+
+					<article className={StyleCardapio.Bebidas}>
+						<h4>
+							<FontAwesomeIcon icon={faBottleWater} /> Bebidas
+						</h4>
+
+						<ProductList
+							products={products}
+							setProducts={setProducts}
+							categoria="Bebidas"
+						/>
+					</article>
+				</section>
+			</main>
+		</>
+	);
 }

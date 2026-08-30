@@ -8,9 +8,7 @@ function ClientNav() {
         <ItemNav to={"/"}>Ínicio</ItemNav>
         <ItemNav to={"/cardapio"}>Cardapio</ItemNav>
         <ItemNav to={"/carrinho"}>Carrinho</ItemNav>
-        <ItemNav to={"/finalizarPedido"}>Finalizar Pedido</ItemNav>
-        <ItemNav to={"/produto/1"}>Produto</ItemNav>
-        <ItemNav to={"/login"}>Login</ItemNav>
+        <ItemNav to={"/login"}>Entrar</ItemNav>
         
       </ul>
     </nav>

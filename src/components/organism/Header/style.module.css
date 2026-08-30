@@ -1,5 +1,6 @@
 .header {
     width: 100%;
+
     min-height: 82px;
 
     display: flex;
@@ -10,9 +11,12 @@
 
     background-color: var(--color-dark);
 
-    border-bottom: 1px solid rgba (229,162,60,0.25);
+    border-bottom: 1px solid rgba(229, 162, 60, 0.25);
 
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+
     z-index: 100;
 
     box-shadow: var(--shadow-sm);

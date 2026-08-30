@@ -1,61 +1,91 @@
 import StyleProductItem from "./style.module.css";
-
 import { useNavigate } from "react-router-dom";
-
+import useAuth from "../../../Contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faPen } from "@fortawesome/free-solid-svg-icons";
+import {
+    faTrash,
+    faPen,
+    faCartPlus,
+    faBolt
+} from "@fortawesome/free-solid-svg-icons";
 
 export default function ProductItem({ product, products, setProducts }) {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const { user } = useAuth();
 
-  const deleteProduct = () => {
-  const productFiltered = products.filter((p) => p.id !== product.id);
+    const deleteProduct = () => {
+        const productFiltered = products.filter(
+            (p) => p.id !== product.id
+        );
 
-  setProducts(productFiltered);
-  localStorage.setItem("products", JSON.stringify(productFiltered));
-};
+        setProducts(productFiltered);
+        localStorage.setItem("products", JSON.stringify(productFiltered));
+    };
 
-  const editProduct = () => {
-    navigate(`/admin/produtos/${product.id}/editar`);
-  };
+    const editProduct = () => {
+        navigate(`/admin/produtos/${product.id}/editar`);
+    };
 
-  return (
-    <article className={StyleProductItem.card}>
+    const addToCart = () => {
+        console.log("Produto adicionado ao carrinho:", product);
+    };
 
-      <img
-        src={product.url}
-        alt={product.nome}
-        className={StyleProductItem.image}
-      />
+    const buyNow = () => {
+        console.log("Comprar agora:", product);
+    };
 
-      <div className={StyleProductItem.info}>
-        <h2>{product.nome}</h2>
+    return (
+        <article className={StyleProductItem.card}>
+            <img
+                src={product.file}
+                alt={product.nome}
+                className={StyleProductItem.image}
+            />
 
-        <p>
-          R$ {Number(product.preco).toFixed(2).replace(".", ",")}
-        </p>
-      </div>
+            <div className={StyleProductItem.info}>
+                <h2>{product.nome}</h2>
+                <p>
+                    R$ {Number(product.preco).toFixed(2).replace(".", ",")}
+                </p>
+            </div>
 
-      <div className={StyleProductItem.actions}>
+            {user?.tipo === "admin" ? (
+                <div className={StyleProductItem.actions}>
+                    <button
+                        onClick={editProduct}
+                        className={`${StyleProductItem.btnItem} ${StyleProductItem.btnEdit}`}
+                    >
+                        <FontAwesomeIcon icon={faPen} />
+                        Editar
+                    </button>
 
-        <button
-          onClick={editProduct}
-          className={`${StyleProductItem.btnItem} ${StyleProductItem.btnEdit}`}
-        >
-          <FontAwesomeIcon icon={faPen} />
-          Editar
-        </button>
+                    <button
+                        onClick={deleteProduct}
+                        className={`${StyleProductItem.btnItem} ${StyleProductItem.btnDelete}`}
+                    >
+                        <FontAwesomeIcon icon={faTrash} />
+                        Remover
+                    </button>
+                </div>
+            ) : (
+                <div className={StyleProductItem.actions}>
+                    <button
+                        onClick={addToCart}
+                        className={`${StyleProductItem.btnItem} ${StyleProductItem.btnCart}`}
+                    >
+                        <FontAwesomeIcon icon={faCartPlus} />
+                        Carrinho
+                    </button>
 
-        <button
-          onClick={deleteProduct}
-          className={`${StyleProductItem.btnItem} ${StyleProductItem.btnDelete}`}
-        >
-          <FontAwesomeIcon icon={faTrash} />
-          Remover
-        </button>
-
-      </div>
-
-    </article>
-  );
+                    <button
+                        onClick={buyNow}
+                        className={`${StyleProductItem.btnItem} ${StyleProductItem.btnBuy}`}
+                    >
+                        <FontAwesomeIcon icon={faBolt} />
+                        Comprar agora
+                    </button>
+                </div>
+            )}
+        </article>
+    );
 }
