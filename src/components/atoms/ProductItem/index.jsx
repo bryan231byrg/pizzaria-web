@@ -2,6 +2,7 @@ import StyleProductItem from "./style.module.css";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../Contexts/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import {
     faTrash,
     faPen,
@@ -10,23 +11,41 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ProductItem({ product, products, setProducts }) {
+
     const navigate = useNavigate();
     const { user } = useAuth();
 
     const deleteProduct = () => {
-        const productFiltered = products.filter(
-            (p) => p.id !== product.id
-        );
+        const productFiltered = products.filter( (p) => p.id !== product.id );
 
         setProducts(productFiltered);
-        localStorage.setItem("products", JSON.stringify(productFiltered));
+        localStorage.setItem ("products", JSON.stringify(productFiltered) );
     };
 
     const editProduct = () => {
         navigate(`/admin/produtos/${product.id}/editar`);
     };
 
-    const addToCart = () => {
+    const addToCarrinho = () => {
+        const carrinho =
+            JSON.parse(localStorage.getItem("carrinho")) || [];
+
+        const produtoExiste = carrinho.find(
+            (item) => item.id === product.id
+        );
+
+        let updatedCarrinho;
+
+        if (produtoExiste) {
+            updatedCarrinho = carrinho.map((item) => item.id === product.id ? { ...item, quantidade: item.quantidade + 1 } : item
+            );
+
+        } else {
+            updatedCarrinho = [ ...carrinho, { ...product, quantidade: 1 } ];
+
+        }
+
+        localStorage.setItem( "carrinho", JSON.stringify(updatedCarrinho));
         console.log("Produto adicionado ao carrinho:", product);
     };
 
@@ -45,7 +64,9 @@ export default function ProductItem({ product, products, setProducts }) {
             <div className={StyleProductItem.info}>
                 <h2>{product.nome}</h2>
                 <p>
-                    R$ {Number(product.preco).toFixed(2).replace(".", ",")}
+                    R$ {Number(product.preco)
+                        .toFixed(2)
+                        .replace(".", ",")}
                 </p>
             </div>
 
@@ -66,12 +87,16 @@ export default function ProductItem({ product, products, setProducts }) {
                         <FontAwesomeIcon icon={faTrash} />
                         Remover
                     </button>
+
                 </div>
+
             ) : (
+
                 <div className={StyleProductItem.actions}>
+
                     <button
-                        onClick={addToCart}
-                        className={`${StyleProductItem.btnItem} ${StyleProductItem.btnCart}`}
+                        onClick={addToCarrinho}
+                        className={`${StyleProductItem.btnItem} ${StyleProductItem.btnCarrinho}`}
                     >
                         <FontAwesomeIcon icon={faCartPlus} />
                         Carrinho
@@ -84,8 +109,12 @@ export default function ProductItem({ product, products, setProducts }) {
                         <FontAwesomeIcon icon={faBolt} />
                         Comprar agora
                     </button>
+
                 </div>
+
             )}
+
         </article>
+
     );
 }
