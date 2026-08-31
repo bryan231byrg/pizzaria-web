@@ -1,11 +1,25 @@
-import Header from "../../../components/organism/Header"
+import Header from "../../../components/organism/Header";
+import CartList from "../../../components/molecules/CartList";
 
-export default function Carrinho(){
+import StyleCarrinho from "./style.module.css";
 
-    return(
+export default function Carrinho() {
+
+    return (
         <>
-        <Header></Header>
-        <h1>Pagina do Carrinho</h1>
+            <Header />
+
+            <main className={StyleCarrinho.container}>
+
+                <div className={StyleCarrinho.title}>
+                    <span>Seu pedido</span>
+
+                    <h1>Meu Carrinho</h1>
+                </div>
+
+                <CartList />
+
+            </main>
         </>
-    )
+    );
 }

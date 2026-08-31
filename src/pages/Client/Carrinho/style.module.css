@@ -1,0 +1,52 @@
+.container {
+    width: 100%;
+    min-height: 100vh;
+
+    padding-top: 120px;
+    padding-bottom: 50px;
+
+    background-color: var(--color-background);
+}
+
+
+/* Título */
+
+.title {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.title span {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+
+.title h1 {
+    margin: 0;
+
+    color: var(--color-text);
+
+    font-size: 36px;
+}
+
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding-top: 105px;
+    }
+
+    .title h1 {
+        font-size: 30px;
+    }
+
+}
