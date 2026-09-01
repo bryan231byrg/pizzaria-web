@@ -1,5 +1,4 @@
 import ItemNav from "../../atoms/ItemNav";
-
 import StyleClientNav from "./style.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -11,20 +10,23 @@ import {
     faUser
 } from "@fortawesome/free-solid-svg-icons";
 
+import useAuth from "../../../Contexts/AuthContext.jsx";
+
 function ClientNav({ onCartClick }) {
 
-    return (
+    const { user } = useAuth();
 
+    return (
         <nav className={StyleClientNav.nav}>
 
             <ul className={StyleClientNav.navList}>
 
-                <ItemNav to={"/"}>
+                <ItemNav to="/">
                     <FontAwesomeIcon icon={faHouse} />
                     Início
                 </ItemNav>
 
-                <ItemNav to={"/cardapio"}>
+                <ItemNav to="/cardapio">
                     <FontAwesomeIcon icon={faUtensils} />
                     Cardápio
                 </ItemNav>
@@ -36,13 +38,21 @@ function ClientNav({ onCartClick }) {
                         className={StyleClientNav.cartButton}
                     >
                         <FontAwesomeIcon icon={faCartShopping} />
+                        Carrinho
                     </button>
                 </li>
 
-                <ItemNav to={"/login"}>
-                    <FontAwesomeIcon icon={faUser} />
-                    Entrar/Cadastrar
-                </ItemNav>
+                {user ? (
+                    <ItemNav to="/perfil">
+                        <FontAwesomeIcon icon={faUser} />
+                        {user.nome}
+                    </ItemNav>
+                ) : (
+                    <ItemNav to="/login">
+                        <FontAwesomeIcon icon={faUser} />
+                        Entrar/Cadastrar
+                    </ItemNav>
+                )}
 
             </ul>
 

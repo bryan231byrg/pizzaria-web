@@ -23,7 +23,7 @@ function FormCadastro({ onSubmit }) {
                     return;
                 }
 
-                const resultado = onSubmit(telefone, senha);
+                const resultado = onSubmit(telefone, senha, nome);
                 setMensagem(resultado);
             }}
         >
