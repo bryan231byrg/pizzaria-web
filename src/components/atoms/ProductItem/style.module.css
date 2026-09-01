@@ -1,3 +1,7 @@
+/* =========================
+   CARD DO PRODUTO
+========================= */
+
 .card {
     width: 100%;
     overflow: hidden;
@@ -5,24 +9,30 @@
     display: flex;
     flex-direction: column;
 
-    background-color: #ffffff;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
 
-    border: 1px solid #e9e9e9;
-    border-radius: 16px;
-
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-sm);
 
     transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal),
+        border-color var(--transition-normal);
 }
 
 .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.10);
+    transform: translateY(-6px);
+
+    border-color: rgba(229, 162, 60, 0.55);
+
+    box-shadow: var(--shadow-md);
 }
 
-/* IMAGEM */
+
+/* =========================
+   IMAGEM
+========================= */
 
 .image {
     width: 100%;
@@ -31,9 +41,18 @@
     display: block;
 
     object-fit: cover;
+
+    transition: transform 0.4s ease;
 }
 
-/* INFORMAÇÕES */
+.card:hover .image {
+    transform: scale(1.03);
+}
+
+
+/* =========================
+   INFORMAÇÕES
+========================= */
 
 .info {
     padding: 18px 18px 10px;
@@ -46,9 +65,10 @@
 .info h2 {
     margin: 0;
 
-    color: #171717;
+    color: var(--color-text);
 
-    font-size: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
     font-weight: 700;
 
     white-space: nowrap;
@@ -61,11 +81,15 @@
 
     color: var(--color-primary);
 
+    font-family: 'Poppins', sans-serif;
     font-size: 20px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
-/* BOTÕES */
+
+/* =========================
+   BOTÕES
+========================= */
 
 .actions {
     padding: 12px 18px 18px;
@@ -78,25 +102,28 @@
     flex: 1;
 
     min-height: 44px;
+
     padding: 0 12px;
 
     display: flex;
     align-items: center;
     justify-content: center;
-
     gap: 7px;
 
-    border: none;
-    border-radius: 9px;
+    border-radius: var(--radius-sm);
+    border: 1px solid transparent;
 
+    font-family: 'Poppins', sans-serif;
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 600;
 
     cursor: pointer;
 
     transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
+        background-color var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast),
+        transform var(--transition-fast);
 }
 
 .btnItem:hover {
@@ -107,42 +134,91 @@
     transform: translateY(0);
 }
 
-/* BOTÃO EDITAR */
+
+/* =========================
+   BOTÃO EDITAR
+   ADMIN
+========================= */
 
 .btnEdit {
-    background-color: #f2f2f2;
-    color: #171717;
+    background-color: #f3f1ed;
+    color: var(--color-text);
+    border-color: var(--color-border);
 }
 
 .btnEdit:hover {
-    background-color: #dedede;
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-dark);
 }
 
-/* BOTÃO CARRINHO */
-.btnCart {
-    background-color: #fff1e6;
-    color: #f26b21;
-    border: 1px solid #ffd2b3;
+
+/* =========================
+   BOTÃO REMOVER
+   ADMIN
+========================= */
+
+.btnDelete {
+    background-color: #fff0f0;
+    color: var(--color-primary);
+    border-color: #f1cccc;
 }
 
-.btnCart:hover {
-    background-color: #ffe2cf;
-    border-color: #f5b98f;
+.btnDelete:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-light);
 }
 
-/* BOTÃO COMPRAR */
+
+/* =========================
+   BOTÃO CARRINHO
+========================= */
+
+.btnCarrinho {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.btnCarrinho:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+
+/* =========================
+   BOTÃO COMPRAR AGORA
+========================= */
+
 .btnBuy {
-    background-color: #f26b21;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    border-color: var(--color-primary);
 }
 
 .btnBuy:hover {
-    background-color: #d95512;
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
 }
 
-/* RESPONSIVIDADE */
+
+/* =========================
+   ÍCONES
+========================= */
+
+.btnItem svg {
+    font-size: 14px;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
 
 @media (max-width: 600px) {
+
     .image {
         height: 220px;
     }
@@ -151,11 +227,22 @@
         padding: 16px 16px 10px;
     }
 
+    .info h2 {
+        font-size: 19px;
+    }
+
+    .info p {
+        font-size: 18px;
+    }
+
     .actions {
         padding: 10px 16px 16px;
+        gap: 8px;
     }
 
     .btnItem {
+        min-height: 42px;
+        padding: 0 8px;
         font-size: 12px;
     }
 }
