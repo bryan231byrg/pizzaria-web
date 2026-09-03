@@ -278,7 +278,6 @@ Contextos / Estados
    ▼
 LocalStorage
 ```
-
 ---
 
 ## 🔄 Fluxo do Cliente
