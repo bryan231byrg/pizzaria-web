@@ -4,42 +4,27 @@ import { useNavigate } from "react-router-dom";
 import StyleLogin from "./style.module.css";
 
 function Login() {
-
     const navigate = useNavigate();
     const { login } = useAuth();
 
     function handleSubmit(telefone, senha) {
-        const admins = [
-            {
-                telefone: "85994012630",
-                nome: "Bryan",
-                senha: "admin1234",
-                tipo: "admin"
-            }
-        ];
+        const admin = {
+            telefone: "85994012630",
+            nome: "Bryan William",
+            senha: "admin1234",
+            tipo: "admin"
+        };
 
-        const adminEncontrado = admins.find((admin) => {
-            return (
-                admin.telefone === telefone &&
-                admin.senha === senha
-            );
-        });
-
-        if (adminEncontrado) {
-            login(adminEncontrado);
+        if (admin.telefone === telefone && admin.senha === senha) {
+            login(admin);
             navigate("/admin");
             return;
         }
 
-        const users = JSON.parse(
-            localStorage.getItem("users")
-        ) || [];
+        const users = JSON.parse(localStorage.getItem("users")) || [];
 
         const usuarioEncontrado = users.find((user) => {
-            return (
-                user.telefone === telefone &&
-                user.senha === senha
-            );
+            return user.telefone === telefone && user.senha === senha;
         });
 
         if (usuarioEncontrado) {
@@ -47,13 +32,13 @@ function Login() {
             navigate("/");
             return;
         }
+
         return "Telefone ou senha incorretos";
     }
 
     return (
         <main className={StyleLogin.main}>
             <section className={StyleLogin.login}>
-
                 <div className={StyleLogin.header}>
                     <h1>Login</h1>
                     <p>
@@ -62,9 +47,7 @@ function Login() {
                 </div>
 
                 <div className={StyleLogin.form}>
-                    <FormLogin
-                        onSubmit={handleSubmit}
-                    />
+                    <FormLogin onSubmit={handleSubmit} />
                 </div>
             </section>
         </main>

@@ -23,7 +23,6 @@ export default function AdminNav() {
                 <ItemNav to="/admin/produtos">Produtos</ItemNav>
                 <ItemNav to="/admin/categorias">Categorias</ItemNav>
                 <ItemNav to="/admin/configuracoes">Configurações</ItemNav>
-                <ItemNav to="/">Cliente</ItemNav>
 
                 {user && (
                     <li className={StyleAdminNav.userMenu}>
