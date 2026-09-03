@@ -1,6 +1,9 @@
 import Header from "../../../components/organism/Header"
 import StyleHome from "./style.module.css";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
+
 export default function Home(){
 
     return(
@@ -32,7 +35,7 @@ export default function Home(){
 
                         <div className={StyleHome.heroImage}>
                         <div className={StyleHome.imageCircle}>
-                            🍕
+                            <FontAwesomeIcon icon={faPizzaSlice} />
                         </div>
                     </div>
             </section>

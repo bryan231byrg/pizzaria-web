@@ -12,6 +12,10 @@
     overflow: hidden;
 }
 
+/* ============================= */
+/* CONTEÚDO */
+/* ============================= */
+
 .heroContent {
     width: 50%;
     max-width: 620px;
@@ -27,6 +31,7 @@
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 700;
+
     letter-spacing: 3px;
 }
 
@@ -37,6 +42,7 @@
 
     font-size: clamp(48px, 6vw, 82px);
     font-weight: 700;
+    line-height: 1.05;
 }
 
 .heroContent p {
@@ -50,7 +56,13 @@
     line-height: 1.8;
 }
 
+/* ============================= */
+/* BOTÃO */
+/* ============================= */
+
 .heroButton {
+    display: inline-block;
+
     padding: 14px 30px;
 
     border: none;
@@ -61,6 +73,8 @@
 
     font-size: 15px;
     font-weight: 600;
+
+    cursor: pointer;
 
     transition: var(--transition-normal);
 }
@@ -77,12 +91,16 @@
     transform: scale(0.97);
 }
 
+/* ============================= */
+/* IMAGEM / PIZZA */
+/* ============================= */
+
 .heroImage {
     width: 45%;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .imageCircle {
@@ -97,12 +115,18 @@
 
     background-color: var(--color-accent);
 
+    color: var(--color-primary);
+
     font-size: 180px;
 
     box-shadow: var(--shadow-md);
 
     animation: floatingPizza 4s ease-in-out infinite;
 }
+
+/* ============================= */
+/* ANIMAÇÃO */
+/* ============================= */
 
 @keyframes floatingPizza {
     0%,
@@ -112,5 +136,118 @@
 
     50% {
         transform: translateY(-12px);
+    }
+}
+
+/* ============================= */
+/* TABLET */
+/* ============================= */
+
+@media (max-width: 1000px) {
+    .hero {
+        padding: 70px 6%;
+    }
+
+    .heroContent {
+        width: 52%;
+    }
+
+    .heroImage {
+        width: 43%;
+    }
+
+    .imageCircle {
+        width: 340px;
+        height: 340px;
+
+        font-size: 145px;
+    }
+}
+
+/* ============================= */
+/* MOBILE */
+/* ============================= */
+
+@media (max-width: 800px) {
+    .hero {
+        min-height: auto;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 50px;
+
+        padding: 70px 6%;
+
+        text-align: center;
+    }
+
+    .heroContent {
+        width: 100%;
+        max-width: 620px;
+    }
+
+    .heroContent h1 {
+        font-size: clamp(42px, 10vw, 64px);
+    }
+
+    .heroContent p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .heroImage {
+        width: 100%;
+    }
+
+    .imageCircle {
+        width: 320px;
+        height: 320px;
+
+        font-size: 135px;
+    }
+}
+
+/* ============================= */
+/* CELULARES PEQUENOS */
+/* ============================= */
+
+@media (max-width: 500px) {
+    .hero {
+        gap: 40px;
+
+        padding: 50px 5%;
+    }
+
+    .subtitle {
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .heroContent h1 {
+        margin-bottom: 18px;
+
+        font-size: 42px;
+    }
+
+    .heroContent p {
+        margin-bottom: 28px;
+
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .heroButton {
+        padding: 13px 26px;
+
+        font-size: 14px;
+    }
+
+    .imageCircle {
+        width: 250px;
+        height: 250px;
+
+        font-size: 105px;
     }
 }
