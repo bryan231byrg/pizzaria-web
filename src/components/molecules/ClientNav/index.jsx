@@ -3,13 +3,7 @@ import ItemNav from "../../atoms/ItemNav";
 import StyleClientNav from "./style.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faHouse,
-    faUtensils,
-    faCartShopping,
-    faUser,
-    faChevronDown
-} from "@fortawesome/free-solid-svg-icons";
+import {faHouse, faUtensils, faCartShopping, faUser, faChevronDown} from "@fortawesome/free-solid-svg-icons";
 
 import useAuth from "../../../Contexts/AuthContext.jsx";
 
@@ -73,7 +67,7 @@ function ClientNav({ onCartClick }) {
                                     type="button"
                                     onClick={handleLogout}
                                     className={StyleClientNav.logoutButton}
-                                >
+                                    > 
                                     Sair
                                 </button>
                             </div>

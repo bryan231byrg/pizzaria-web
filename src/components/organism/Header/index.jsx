@@ -10,7 +10,7 @@ import StyleHeader from "./style.module.css";
 function Header() {
 
     const { user } = useAuth();
-
+    
     const [cartOpen, setCartOpen] = useState(false);
 
     return (

@@ -7,16 +7,28 @@ function Login() {
     const navigate = useNavigate();
     const { login } = useAuth();
 
-    function handleSubmit(telefone, senha) {
-        const admin = {
+    function submitAccess(telefone, senha) {
+        const admin = [ 
+            {
             telefone: "85994012630",
             nome: "Bryan William",
             senha: "admin1234",
             tipo: "admin"
-        };
+            },
+            {
+                telefone: "85987434352",
+                nome: "Bia Sampaio",
+                senha: "admin1234",
+                tipo: "admin"
+            }
+        ];
 
-        if (admin.telefone === telefone && admin.senha === senha) {
-            login(admin);
+        const adminEncontrado = admin.find((a) => {
+            return a.telefone === telefone && a.senha === senha;
+        }); 
+
+        if (adminEncontrado) {
+            login(adminEncontrado);
             navigate("/admin");
             return;
         }
@@ -47,7 +59,7 @@ function Login() {
                 </div>
 
                 <div className={StyleLogin.form}>
-                    <FormLogin onSubmit={handleSubmit} />
+                    <FormLogin onSubmit={submitAccess} />
                 </div>
             </section>
         </main>

@@ -41,19 +41,16 @@ export default function CartSidebar({ isOpen, onClose }) {
 
     // Diminuir quantidade
     const diminuirQuantidade = (id) => {
-        const novoCarrinho = carrinho
-            .map((product) => {
+        const novoCarrinho = carrinho.map((product) => {
                 if (product.id === id) {
                     return {
                         ...product,
                         quantidade: product.quantidade - 1,
                     };
                 }
-
                 return product;
             })
             .filter((product) => product.quantidade > 0);
-
         salvarCarrinho(novoCarrinho);
     };
 
@@ -62,7 +59,6 @@ export default function CartSidebar({ isOpen, onClose }) {
         const novoCarrinho = carrinho.filter(
             (product) => product.id !== id
         );
-
         salvarCarrinho(novoCarrinho);
     };
 
