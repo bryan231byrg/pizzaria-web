@@ -23,7 +23,6 @@ Permite que o cliente:
 - 📝 Realize cadastro.
 
 ### 🔐 Área Administrativa
-
 Permite que o administrador:
 
 - 📊 Acesse um dashboard;
