@@ -3,7 +3,7 @@ import ItemNav from "../../atoms/ItemNav";
 import StyleClientNav from "./style.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faHouse, faUtensils, faCartShopping, faUser, faChevronDown} from "@fortawesome/free-solid-svg-icons";
+import {faHouse, faTag, faCartShopping, faUser, faChevronDown} from "@fortawesome/free-solid-svg-icons";
 
 import useAuth from "../../../Contexts/AuthContext.jsx";
 
@@ -26,8 +26,8 @@ function ClientNav({ onCartClick }) {
                 </ItemNav>
 
                 <ItemNav to="/cardapio">
-                    <FontAwesomeIcon icon={faUtensils} />
-                    Cardápio
+                    <FontAwesomeIcon icon={faTag} />
+                    Promoções
                 </ItemNav>
 
                 <li>

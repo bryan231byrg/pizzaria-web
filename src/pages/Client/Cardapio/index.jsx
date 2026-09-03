@@ -1,132 +1,60 @@
-import Header from "../../../components/organism/Header";
 import ProductList from "../../../components/molecules/ProductList";
 import StyleCardapio from "./style.module.css";
 import { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
-	faStar,
-	faFire,
-	faTag,
-	faPizzaSlice,
-	faBottleWater
+    faStar,
+    faFire,
+    faTag,
+    faPizzaSlice,
+    faBottleWater
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Cardapio() {
-	const [products, setProducts] = useState([]);
+export default function Cardapio({ categoria, busca }) {
+    const [products, setProducts] = useState([]);
 
-	useEffect(() => {
-		const productsSaveds = localStorage.getItem("products");
+    useEffect(() => {
+        const productsSaveds = localStorage.getItem("products");
 
-		if (productsSaveds) {
-			setProducts(JSON.parse(productsSaveds));
-		}
-	}, []);
+        if (productsSaveds) {
+            setProducts(JSON.parse(productsSaveds));
+        }
+    }, []);
 
-	return (
-		<>
-			<Header />
+    const categorias = [
+        { nome: "Destaques", titulo: "Destaques", icon: faStar },
+        { nome: "Oferta Limitada", titulo: "Oferta LIMITADA", icon: faFire },
+        { nome: "Promoções", titulo: "Promoções do dia", icon: faTag },
+        { nome: "Pizza Grande", titulo: "Pizzas | Grande", icon: faPizzaSlice },
+        { nome: "Pizza Pequena", titulo: "Pizzas | Pequena", icon: faPizzaSlice },
+        { nome: "Calzone Grande", titulo: "Calzones | Grande", icon: faPizzaSlice },
+        { nome: "Bebidas", titulo: "Bebidas", icon: faBottleWater }
+    ];
 
-			<main className={StyleCardapio.container}>
-				<section className={StyleCardapio.intro}>
-					<span>
-						<FontAwesomeIcon icon={faPizzaSlice} /> NOSSO CARDÁPIO
-					</span>
+    const categoriasExibidas = categoria
+        ? categorias.filter((item) => item.nome === categoria)
+        : categorias;
 
-					<h1>Escolha sua pizza favorita</h1>
+    return (
+        <section className={StyleCardapio.Cardapio}>
+            <div className={StyleCardapio.categorias}>
+                {categoriasExibidas.map((item) => (
+                    <article key={item.nome}>
+                        <h4>
+                            <FontAwesomeIcon icon={item.icon} />
+                            {item.titulo}
+                        </h4>
 
-					<p>
-						Sabores preparados com ingredientes selecionados para deixar seu
-						pedido ainda mais especial.
-					</p>
-				</section>
-
-				<section className={StyleCardapio.categorias}>
-					<article className={StyleCardapio.destaques}>
-						<h4>
-							<FontAwesomeIcon icon={faStar} /> Destaques
-						</h4>
-
-						<ProductList
-							products={products}
-							setProducts={setProducts}
-							categoria="Destaques"
-						/>
-					</article>
-
-					<article className={StyleCardapio.OfertaLimitada}>
-						<h4>
-							<FontAwesomeIcon icon={faFire} /> Oferta LIMITADA
-						</h4>
-
-						<ProductList
-							products={products}
-							setProducts={setProducts}
-							categoria="Oferta Limitada"
-						/>
-					</article>
-
-					<article className={StyleCardapio.promocoes}>
-						<h4>
-							<FontAwesomeIcon icon={faTag} /> Promoções do dia
-						</h4>
-
-						<ProductList
-							products={products}
-							setProducts={setProducts}
-							categoria="Promoções"
-						/>
-					</article>
-
-					<article className={StyleCardapio.PizzasG}>
-						<h4>
-							<FontAwesomeIcon icon={faPizzaSlice} /> Pizzas | Grande
-						</h4>
-
-						<ProductList
-							products={products}
-							setProducts={setProducts}
-							categoria="Pizza Grande"
-						/>
-					</article>
-
-					<article className={StyleCardapio.PizzasP}>
-						<h4>
-							<FontAwesomeIcon icon={faPizzaSlice} /> Pizzas | Pequena
-						</h4>
-
-						<ProductList
-							products={products}
-							setProducts={setProducts}
-							categoria="Pizza Pequena"
-						/>
-					</article>
-
-					<article className={StyleCardapio.CalzonesG}>
-						<h4>
-							<FontAwesomeIcon icon={faPizzaSlice} /> Calzones | Grande
-						</h4>
-
-						<ProductList
-							products={products}
-							setProducts={setProducts}
-							categoria="Calzone Grande"
-						/>
-					</article>
-
-					<article className={StyleCardapio.Bebidas}>
-						<h4>
-							<FontAwesomeIcon icon={faBottleWater} /> Bebidas
-						</h4>
-
-						<ProductList
-							products={products}
-							setProducts={setProducts}
-							categoria="Bebidas"
-						/>
-					</article>
-				</section>
-			</main>
-		</>
-	);
+                        <ProductList
+                            products={products}
+                            setProducts={setProducts}
+                            categoria={item.nome}
+                            busca={busca}
+                        />
+                    </article>
+                ))}
+            </div>
+        </section>
+    );
 }

@@ -1,27 +1,29 @@
 import StyleProductList from "./style.module.css";
+
 import ProductItem from "../../atoms/ProductItem";
 
-function ProductList({products, setProducts, categoria, }) 
-{
-  
-  const produtosFiltrados = products.filter(
-    (product) => product.categoria === categoria
-  );
+function ProductList({ products, setProducts, categoria, busca = "" }) {
 
-  return (
-    <section className={StyleProductList.list}>
-      {produtosFiltrados.map((product) => {
-        return (
-          <ProductItem
-            key={product.id}
-            product={product}
-            products={products}
-            setProducts={setProducts}
-          />
-        );
-      })}
-    </section>
-  );
+    const produtosFiltrados = products.filter(
+        (product) =>
+            product.categoria === categoria &&
+            product.nome?.toLowerCase().includes(busca.toLowerCase())
+    );
+
+    return (
+        <section className={StyleProductList.list}>
+            {produtosFiltrados.map((product) => {
+                return (
+                    <ProductItem
+                        key={product.id}
+                        product={product}
+                        products={products}
+                        setProducts={setProducts}
+                    />
+                );
+            })}
+        </section>
+    );
 }
 
-export default ProductList
+export default ProductList;

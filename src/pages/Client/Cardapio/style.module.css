@@ -1,22 +1,12 @@
-/* =========================
-   CONTAINER PRINCIPAL
-========================= */
-
-.container {
+.Cardapio {
     width: 100%;
-    min-height: 100vh;
-    padding: 140px 7% 80px;
+    padding: 50px 30px 80px;
     background-color: var(--color-background);
 }
 
-
-/* =========================
-   INTRODUÇÃO
-========================= */
-
 .intro {
     max-width: 750px;
-    margin: 0 auto 70px;
+    margin: 0 auto 50px;
     text-align: center;
 }
 
@@ -24,10 +14,10 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
+
     margin-bottom: 16px;
 
     color: var(--color-primary);
-
     font-size: 14px;
     font-weight: 700;
     letter-spacing: 3px;
@@ -41,8 +31,7 @@
     margin-bottom: 18px;
 
     color: var(--color-dark);
-
-    font-size: clamp(38px, 5vw, 60px);
+    font-size: clamp(32px, 5vw, 50px);
     font-weight: 700;
 }
 
@@ -51,115 +40,68 @@
     margin: 0 auto;
 
     color: var(--color-text-secondary);
-
     font-size: 16px;
     line-height: 1.8;
 }
 
-
-/* =========================
-   CATEGORIAS
-========================= */
-
 .categorias {
     width: 100%;
+
     display: flex;
     flex-direction: column;
-    gap: 70px;
+    gap: 50px;
 }
 
-
-/* =========================
-   CADA SEÇÃO
-========================= */
-
-.destaques,
-.OfertaLimitada,
-.promocoes,
-.PizzasG,
-.PizzasP,
-.CalzonesG,
-.Bebidas {
+.categorias article {
     width: 100%;
 }
 
-
-/* =========================
-   TÍTULO DA CATEGORIA
-========================= */
-
-.destaques h4,
-.OfertaLimitada h4,
-.promocoes h4,
-.PizzasG h4,
-.PizzasP h4,
-.CalzonesG h4,
-.Bebidas h4 {
+.categorias article h4 {
     display: flex;
     align-items: center;
     gap: 10px;
 
-    margin-bottom: 28px;
+    margin-bottom: 25px;
 
     color: var(--color-dark);
-
     font-size: 25px;
     font-weight: 700;
 }
 
-.destaques h4 svg,
-.OfertaLimitada h4 svg,
-.promocoes h4 svg,
-.PizzasG h4 svg,
-.PizzasP h4 svg,
-.CalzonesG h4 svg,
-.Bebidas h4 svg {
+.categorias article h4 svg {
     color: var(--color-primary);
     font-size: 21px;
 }
 
-
-/* =========================
-   DESTAQUE ESPECIAL
-========================= */
-
-.destaques {
-    position: relative;
-}
-
-.destaques h4 {
+.categorias article:first-child h4 {
     color: var(--color-primary);
 }
 
 
-/* =========================
-   RESPONSIVIDADE
-========================= */
-
 @media (max-width: 1000px) {
 
-    .container {
-        padding: 125px 5% 60px;
+    .Cardapio {
+        padding: 45px 5% 60px;
     }
 
     .intro {
-        margin-bottom: 55px;
+        margin-bottom: 45px;
     }
 
     .categorias {
-        gap: 55px;
+        gap: 45px;
     }
 }
 
 
 @media (max-width: 600px) {
 
-    .container {
-        padding: 115px 20px 50px;
+    .Cardapio {
+        padding: 40px 20px 50px;
     }
 
     .intro {
-        margin-bottom: 45px;
+        margin-bottom: 40px;
     }
 
     .intro span {
@@ -168,7 +110,7 @@
     }
 
     .intro h1 {
-        font-size: 36px;
+        font-size: 34px;
     }
 
     .intro p {
@@ -176,17 +118,11 @@
     }
 
     .categorias {
-        gap: 45px;
+        gap: 40px;
     }
 
-    .destaques h4,
-    .OfertaLimitada h4,
-    .promocoes h4,
-    .PizzasG h4,
-    .PizzasP h4,
-    .CalzonesG h4,
-    .Bebidas h4 {
+    .categorias article h4 {
+        margin-bottom: 20px;
         font-size: 22px;
-        margin-bottom: 22px;
     }
 }
