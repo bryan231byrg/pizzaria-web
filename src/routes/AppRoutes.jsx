@@ -4,7 +4,6 @@ import PrivateRoute from "./PrivateRoutes.jsx";
 // Cliente (Publica)
 import Home from "../pages/Client/Home/index.jsx";
 import Cardapio from "../pages/Client/Cardapio/";
-import Produto from "../pages/Client/Produto/";
 import Carrinho from "../pages/Client/Carrinho/";
 import FinalizarPedido from "../pages/Client/FinalizarPedido/";
 import Login from "../pages/Client/Login/index.jsx";
@@ -25,7 +24,6 @@ function AppRoutes() {
           {/* Rota Pública (Cliente) */}
           <Route path="/" element={<Home />} />
           <Route path="/cardapio" element={<Cardapio />} />
-          <Route path="/produto/:id" element={<Produto />} />
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/finalizarpedido" element={<FinalizarPedido />} />
           <Route path="/login" element={<Login />} />

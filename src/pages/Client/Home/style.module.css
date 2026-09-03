@@ -1,253 +1,131 @@
 .hero {
-    min-height: calc(100vh - 82px);
+    padding: 22px 30px 0;
+}
+
+.heroContent {
+    height: 330px;
+
+    border-radius: 16px;
+
+    background-color: #ddd;
+    background-image: url("../../../assets/banner.jpeg");
+    background-size: cover;
+    background-position: center;
+
+    position: relative;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+
+    background-color: #ff6b00;
+
+    border: 5px solid white;
+    border-radius: 16px;
+
+    position: absolute;
+    left: 45px;
+    bottom: -75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: white;
+    font-size: 65px;
+}
+
+.restaurantInfo {
+    padding: 90px 30px 0;
+}
+
+.restaurantInfo h1 {
+    margin: 0;
+
+    color: #1d3557;
+    font-size: 32px;
+}
+
+.info {
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: #697586;
+    font-size: 14px;
+}
+
+.info svg {
+    margin-right: 5px;
+}
+
+.open {
+    color: #ff6b00;
+    font-weight: 600;
+}
+
+.filters {
+    padding: 30px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    padding: 80px 8%;
-
-    background-color: var(--color-background);
-
-    overflow: hidden;
 }
 
-/* ============================= */
-/* CONTEÚDO */
-/* ============================= */
+.categories {
+    width: 200px;
+    height: 44px;
 
-.heroContent {
-    width: 50%;
-    max-width: 620px;
-}
+    padding: 0 12px;
 
-.subtitle {
-    display: inline-block;
+    background-color: white;
 
-    margin-bottom: 18px;
+    border: 1px solid #d9dce1;
+    border-radius: 6px;
 
-    color: var(--color-primary);
-
-    font-family: 'Poppins', sans-serif;
+    color: #536174;
     font-size: 14px;
-    font-weight: 700;
-
-    letter-spacing: 3px;
-}
-
-.heroContent h1 {
-    margin-bottom: 24px;
-
-    color: var(--color-dark);
-
-    font-size: clamp(48px, 6vw, 82px);
-    font-weight: 700;
-    line-height: 1.05;
-}
-
-.heroContent p {
-    max-width: 500px;
-
-    margin-bottom: 35px;
-
-    color: var(--color-text-secondary);
-
-    font-size: 17px;
-    line-height: 1.8;
-}
-
-/* ============================= */
-/* BOTÃO */
-/* ============================= */
-
-.heroButton {
-    display: inline-block;
-
-    padding: 14px 30px;
-
-    border: none;
-    border-radius: var(--radius-sm);
-
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
-
-    font-size: 15px;
-    font-weight: 600;
 
     cursor: pointer;
-
-    transition: var(--transition-normal);
+    outline: none;
 }
 
-.heroButton:hover {
-    background-color: var(--color-primary-dark);
-
-    transform: translateY(-3px);
-
-    box-shadow: var(--shadow-md);
+.categories:focus {
+    border-color: #ff6b00;
 }
 
-.heroButton:active {
-    transform: scale(0.97);
-}
+.search {
+    width: 310px;
+    height: 44px;
 
-/* ============================= */
-/* IMAGEM / PIZZA */
-/* ============================= */
-
-.heroImage {
-    width: 45%;
+    padding: 0 12px;
 
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 10px;
+
+    background-color: white;
+
+    border: 1px solid #d9dce1;
+    border-radius: 6px;
 }
 
-.imageCircle {
-    width: 420px;
-    height: 420px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background-color: var(--color-accent);
-
-    color: var(--color-primary);
-
-    font-size: 180px;
-
-    box-shadow: var(--shadow-md);
-
-    animation: floatingPizza 4s ease-in-out infinite;
+.search svg {
+    color: #697586;
 }
 
-/* ============================= */
-/* ANIMAÇÃO */
-/* ============================= */
+.search input {
+    width: 100%;
 
-@keyframes floatingPizza {
-    0%,
-    100% {
-        transform: translateY(0);
-    }
+    border: none;
+    outline: none;
 
-    50% {
-        transform: translateY(-12px);
-    }
+    font-size: 14px;
 }
 
-/* ============================= */
-/* TABLET */
-/* ============================= */
-
-@media (max-width: 1000px) {
-    .hero {
-        padding: 70px 6%;
-    }
-
-    .heroContent {
-        width: 52%;
-    }
-
-    .heroImage {
-        width: 43%;
-    }
-
-    .imageCircle {
-        width: 340px;
-        height: 340px;
-
-        font-size: 145px;
-    }
-}
-
-/* ============================= */
-/* MOBILE */
-/* ============================= */
-
-@media (max-width: 800px) {
-    .hero {
-        min-height: auto;
-
-        flex-direction: column;
-
-        justify-content: center;
-
-        gap: 50px;
-
-        padding: 70px 6%;
-
-        text-align: center;
-    }
-
-    .heroContent {
-        width: 100%;
-        max-width: 620px;
-    }
-
-    .heroContent h1 {
-        font-size: clamp(42px, 10vw, 64px);
-    }
-
-    .heroContent p {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .heroImage {
-        width: 100%;
-    }
-
-    .imageCircle {
-        width: 320px;
-        height: 320px;
-
-        font-size: 135px;
-    }
-}
-
-/* ============================= */
-/* CELULARES PEQUENOS */
-/* ============================= */
-
-@media (max-width: 500px) {
-    .hero {
-        gap: 40px;
-
-        padding: 50px 5%;
-    }
-
-    .subtitle {
-        font-size: 12px;
-        letter-spacing: 2px;
-    }
-
-    .heroContent h1 {
-        margin-bottom: 18px;
-
-        font-size: 42px;
-    }
-
-    .heroContent p {
-        margin-bottom: 28px;
-
-        font-size: 15px;
-        line-height: 1.7;
-    }
-
-    .heroButton {
-        padding: 13px 26px;
-
-        font-size: 14px;
-    }
-
-    .imageCircle {
-        width: 250px;
-        height: 250px;
-
-        font-size: 105px;
-    }
+.search input::placeholder {
+    color: #697586;
 }

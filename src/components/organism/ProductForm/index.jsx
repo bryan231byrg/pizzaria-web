@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InputForm from "../../molecules/InputForm/";
+import InputForm from "../../molecules/inputForm/";
 import StyleProductForm from "./style.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPizzaSlice } from "@fortawesome/free-solid-svg-icons";
