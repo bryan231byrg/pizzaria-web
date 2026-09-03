@@ -30,7 +30,7 @@ export default function Home() {
                 </section>
 
                 <section className={StyleHome.restaurantInfo}>
-                    <h1>Papa's Pizzereia | Fortaleza</h1>
+                    <h1>Papa's Pizza's | Fortaleza</h1>
 
                     <div className={StyleHome.info}>
                         <span className={StyleHome.open}>
