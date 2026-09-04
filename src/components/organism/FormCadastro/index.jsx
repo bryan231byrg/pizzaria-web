@@ -56,7 +56,7 @@ function FormCadastro({ onSubmit }) {
             <div className={StyleCadastroForm.actions}>
                 <div className={StyleCadastroForm.buttons}>
                     <button type="submit">
-                        Entrar
+                        Criar conta 
                     </button>
                 </div>
 
