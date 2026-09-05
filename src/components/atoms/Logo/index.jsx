@@ -1,4 +1,4 @@
-import LogoPizzaria from "../../../assets/logo-papa'spizzeria.jpg";
+import LogoPizzaria from "../../../assets/logoteste.png";
 import StyleLogo from "./style.module.css";
 
 export default function Logo() {
