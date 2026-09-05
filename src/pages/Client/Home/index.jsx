@@ -5,9 +5,9 @@ import Cardapio from "../Cardapio";
 import StyleHome from "./style.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Logo from "../../../components/atoms/Logo";
 
 import {
-    faPizzaSlice,
     faLocationDot,
     faMagnifyingGlass
 } from "@fortawesome/free-solid-svg-icons";
@@ -24,13 +24,13 @@ export default function Home() {
                 <section className={StyleHome.hero}>
                     <div className={StyleHome.heroContent}>
                         <div className={StyleHome.logo}>
-                            <FontAwesomeIcon icon={faPizzaSlice} />
+                            <Logo></Logo>
                         </div>
                     </div>
                 </section>
 
                 <section className={StyleHome.restaurantInfo}>
-                    <h1>Papa's Pizzereia | Fortaleza</h1>
+                    <h1>Papa's Pizza's | Fortaleza</h1>
 
                     <div className={StyleHome.info}>
                         <span className={StyleHome.open}>
