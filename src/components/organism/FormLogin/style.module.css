@@ -1,0 +1,67 @@
+.form {
+    width: 100%;
+}
+
+.fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 28px;
+}
+
+.buttons {
+    width: 100%;
+}
+
+.buttons button {
+    width: 100%;
+    padding: 14px 20px;
+
+    border: none;
+    border-radius: var(--radius-md);
+
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition: var(--transition-normal);
+}
+
+.buttons button:hover {
+    background-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.anchor {
+    text-align: center;
+}
+
+.anchor a {
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: var(--transition-fast);
+}
+
+.anchor a:hover {
+    color: var(--color-primary-dark);
+}
+
+.mensage {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.mensage p {
+    color: var(--color-primary-dark);
+    font-size: 14px;
+}

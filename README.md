@@ -401,3 +401,4 @@ Novas funcionalidades, melhorias visuais e ajustes na experiência do usuário p
 ## 👨‍💻 Projeto
 
 Projeto desenvolvido para prática de desenvolvimento **Frontend com React**, aplicando conceitos de organização de projetos, componentização e criação de uma aplicação web funcional.
+Projeto desenvolvido para prática de desenvolvimento **Frontend com React**, aplicando conceitos de organização de projetos, componentização e criação de uma aplicação web funcional.
