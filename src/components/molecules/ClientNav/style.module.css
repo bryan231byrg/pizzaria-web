@@ -1,13 +1,35 @@
+/* =========================
+   NAV
+========================= */
+
 .nav {
     width: 100%;
+
     display: flex;
     align-items: center;
+
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
+
+
+/* =========================
+   LISTA
+========================= */
 
 .navList {
     width: 100%;
+
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
+    gap: 6px;
 
     margin: 0;
     padding: 0;
@@ -15,25 +37,31 @@
     list-style: none;
 }
 
+
 /* =========================
-   CADA ITEM OCUPA 1/4
+   ITENS
 ========================= */
 
-.navList > * {
-    flex: 1;
+.navList > li {
+    flex: 1 1 0;
+
+    min-width: 0;
 
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+
 /* =========================
-   LINKS
+   BOTÕES
 ========================= */
 
-.navList a {
-    width: 100%;
-    min-height: 44px;
+.navButton {
+    position: relative;
+
+    width: auto;
+    min-height: 42px;
 
     display: flex;
     align-items: center;
@@ -41,129 +69,142 @@
 
     gap: 9px;
 
-    color: #f5f5f5;
-    text-decoration: none;
+    padding: 0 16px;
 
-    font-size: 17px;
-    font-weight: 600;
+    box-sizing: border-box;
 
+    border: 1px solid transparent;
     border-radius: 9px;
 
+    background: transparent;
+
+    color: #f5f5f5;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+
+    text-decoration: none;
+    white-space: nowrap;
+
+    cursor: pointer;
+
     transition:
-        color 0.2s ease,
-        background-color 0.2s ease,
-        transform 0.2s ease;
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
 }
 
-.navList a:hover {
-    color: var(--color-accent);
-    background-color: rgba(229, 162, 60, 0.08);
+
+/* =========================
+   LINHA INFERIOR
+========================= */
+
+.navButton::after {
+    content: "";
+
+    position: absolute;
+
+    left: 50%;
+    bottom: 2px;
+
+    width: 0;
+    height: 2px;
+
+    border-radius: 10px;
+
+    background-color: var(--color-accent);
+
+    transform: translateX(-50%);
+
+    transition: width 0.25s ease;
 }
+
+
+/* =========================
+   HOVER
+========================= */
+
+.navButton:hover {
+    color: var(--color-accent);
+
+    background-color: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(229, 162, 60, 0.18);
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 3px 8px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+
+.navButton:hover::after {
+    width: 50%;
+}
+
+
+/* =========================
+   CLIQUE
+========================= */
+
+.navButton:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
 
 /* =========================
    ÍCONES
 ========================= */
 
-.navList svg {
-    font-size: 18px;
+.navButton svg {
     flex-shrink: 0;
-}
 
-/* =========================
-   CARRINHO
-========================= */
-
-.cartButton {
-    width: 100%;
-    max-width: 150px;
-    height: 44px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 9px;
-
-    border: 1px solid rgba(229, 162, 60, 0.55);
-    border-radius: 9px;
-
-    background-color: rgba(229, 162, 60, 0.04);
-    color: var(--color-accent);
-
-    font-size: 18px;
-
-    cursor: pointer;
+    font-size: 15px;
 
     transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        transform 0.2s ease;
+        transform 0.25s ease,
+        color 0.25s ease;
 }
 
-.cartButton:hover {
-    background-color: rgba(229, 162, 60, 0.12);
-    border-color: var(--color-accent);
+
+.navButton:hover svg {
     transform: translateY(-1px);
 }
 
+
 /* =========================
-   USUÁRIO
+   MENU DO USUÁRIO
 ========================= */
 
 .userMenu {
     position: relative;
 }
 
-.userButton {
-    width: auto;
-    min-width: 140px;
-    min-height: 44px;
-
-    padding: 0 18px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    gap: 9px;
-
-    border: 1px solid var(--color-accent);
-    border-radius: 9px;
-
-    background-color: transparent;
-    color: #f5f5f5;
-
-    font-size: 17px;
-    font-weight: 600;
-
-    cursor: pointer;
-
-    transition:
-        background-color 0.2s ease,
-        color 0.2s ease,
-        transform 0.2s ease;
-}
-
-.userButton:hover {
-    background-color: var(--color-accent);
-    color: var(--color-dark);
-
-    transform: translateY(-1px);
-}
 
 /* =========================
    SETA
 ========================= */
 
-.arrow {
-    font-size: 12px !important;
-    transition: transform 0.2s ease;
+.arrow,
+.arrowOpen {
+    font-size: 10px !important;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease !important;
 }
 
+
 .arrowOpen {
-    font-size: 12px !important;
     transform: rotate(180deg);
 }
+
 
 /* =========================
    DROPDOWN
@@ -172,96 +213,190 @@
 .dropdown {
     position: absolute;
 
-    top: calc(100% + 8px);
+    top: calc(100% + 6px);
     right: 0;
 
-    width: 180px;
+    width: 190px;
 
-    padding: 8px;
+    padding: 6px;
 
     display: flex;
     flex-direction: column;
 
-    gap: 4px;
+    gap: 3px;
 
-    background-color: var(--color-dark);
+    box-sizing: border-box;
 
-    border: 1px solid rgba(229, 162, 60, 0.4);
+    background-color: rgba(0, 0, 0, 0.88);
+
+    border: 1px solid rgba(229, 162, 60, 0.25);
     border-radius: 9px;
 
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
     z-index: 1000;
+
+    animation: dropdownOpen 0.2s ease;
 }
 
+
 /* =========================
-   ITENS DO DROPDOWN
+   ANIMAÇÃO DROPDOWN
+========================= */
+
+@keyframes dropdownOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================
+   LINKS DO DROPDOWN
 ========================= */
 
 .dropdown a,
 .logoutButton {
     width: 100%;
-    min-height: 40px;
+    min-height: 38px;
 
     display: flex;
     align-items: center;
     justify-content: flex-start;
 
-    gap: 9px;
+    gap: 8px;
 
-    padding: 0 12px;
+    padding: 0 11px;
 
     box-sizing: border-box;
 
-    border: none;
+    border: 1px solid transparent;
     border-radius: 7px;
 
     background: transparent;
+
     color: #f5f5f5;
 
-    font-family: inherit;
-    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
     font-weight: 500;
 
     text-decoration: none;
 
     cursor: pointer;
+
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease;
 }
+
+
+/* =========================
+   HOVER DROPDOWN
+========================= */
 
 .dropdown a:hover,
 .logoutButton:hover {
-    background-color: rgba(229, 162, 60, 0.1);
     color: var(--color-accent);
+
+    background-color: rgba(255, 255, 255, 0.06);
+
+    border-color: rgba(229, 162, 60, 0.12);
+
+    transform: translateX(2px);
 }
 
+
 /* =========================
-   RESPONSIVIDADE
+   CLIQUE DROPDOWN
+========================= */
+
+.dropdown a:active,
+.logoutButton:active {
+    transform: translateX(0);
+}
+
+
+/* =========================
+   TABLET
 ========================= */
 
 @media (max-width: 768px) {
 
-    .navList a {
-        font-size: 14px;
-        gap: 6px;
+    .navList {
+        gap: 4px;
     }
 
-    .navList svg {
-        font-size: 16px;
-    }
+    .navButton {
+        min-height: 40px;
 
-    .cartButton {
-        max-width: 100px;
-        font-size: 14px;
-    }
-
-    .userButton {
-        min-width: auto;
         padding: 0 12px;
 
+        gap: 7px;
+
+        font-size: 14px;
+    }
+
+    .navButton svg {
         font-size: 14px;
     }
 
     .dropdown {
-        width: 160px;
+        width: 175px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .navList {
+        gap: 2px;
+    }
+
+    .navButton {
+        min-height: 36px;
+
+        padding: 0 7px;
+
+        gap: 5px;
+
+        font-size: 11px;
+    }
+
+    .navButton svg {
+        font-size: 12px;
+    }
+
+    .arrow,
+    .arrowOpen {
+        font-size: 8px !important;
+    }
+
+    .dropdown {
+        width: 155px;
+    }
+
+    .dropdown a,
+    .logoutButton {
+        min-height: 35px;
+
+        font-size: 11px;
     }
 }

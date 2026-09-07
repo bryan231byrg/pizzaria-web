@@ -3,13 +3,18 @@
 ========================= */
 
 .card {
+    position: relative;
+
     width: 100%;
-    overflow: hidden;
+    max-width: 270px;
 
     display: flex;
     flex-direction: column;
 
+    overflow: hidden;
+
     background-color: var(--color-surface);
+
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
 
@@ -22,7 +27,7 @@
 }
 
 .card:hover {
-    transform: translateY(-6px);
+    transform: translateY(-4px);
 
     border-color: rgba(229, 162, 60, 0.55);
 
@@ -36,11 +41,13 @@
 
 .image {
     width: 100%;
-    height: 230px;
+    height: 155px;
 
     display: block;
 
     object-fit: cover;
+
+    background-color: #f3f1ed;
 
     transition: transform 0.4s ease;
 }
@@ -55,11 +62,16 @@
 ========================= */
 
 .info {
-    padding: 18px 18px 10px;
+    width: 100%;
+
+    padding: 11px 13px 6px;
 
     display: flex;
     flex-direction: column;
-    gap: 7px;
+
+    gap: 4px;
+
+    box-sizing: border-box;
 }
 
 .info h2 {
@@ -68,8 +80,10 @@
     color: var(--color-text);
 
     font-family: 'Playfair Display', serif;
-    font-size: 21px;
+    font-size: 17px;
     font-weight: 700;
+
+    line-height: 1.25;
 
     white-space: nowrap;
     overflow: hidden;
@@ -82,8 +96,82 @@
     color: var(--color-primary);
 
     font-family: 'Poppins', sans-serif;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* =========================
+   PROMOÇÃO
+========================= */
+
+.promocao {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1px;
+}
+
+.precoAntigo {
+    color: #888;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+
+    line-height: 1.2;
+
+    text-decoration: line-through;
+}
+
+.precoPromocional {
+    margin: 0;
+
+    color: var(--color-primary);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    line-height: 1.2;
+}
+
+
+/* =========================
+   BADGE PROMOÇÃO
+========================= */
+
+.badgePromocao {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+
+    z-index: 2;
+
+    padding: 4px 8px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    border-radius: 20px;
+
+    background-color: var(--color-primary);
+
+    color: var(--color-text-light);
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.badgePromocao svg {
+    font-size: 9px;
 }
 
 
@@ -92,30 +180,40 @@
 ========================= */
 
 .actions {
-    padding: 12px 18px 18px;
+    width: 100%;
+
+    padding: 7px 13px 12px;
 
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    box-sizing: border-box;
 }
 
 .btnItem {
-    flex: 1;
+    flex: 1 1 calc(50% - 3px);
 
-    min-height: 44px;
+    min-width: 0;
+    min-height: 34px;
 
-    padding: 0 12px;
+    padding: 0 7px;
 
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 7px;
 
-    border-radius: var(--radius-sm);
+    gap: 5px;
+
     border: 1px solid transparent;
+    border-radius: 7px;
 
     font-family: 'Poppins', sans-serif;
-    font-size: 13px;
+    font-size: 10px;
     font-weight: 600;
+
+    line-height: 1;
 
     cursor: pointer;
 
@@ -134,82 +232,92 @@
     transform: translateY(0);
 }
 
+.btnItem svg {
+    flex-shrink: 0;
+
+    font-size: 10px;
+}
+
 
 /* =========================
-   BOTÃO EDITAR
-   ADMIN
+   EDITAR
 ========================= */
 
 .btnEdit {
     background-color: #f3f1ed;
+
     color: var(--color-text);
+
     border-color: var(--color-border);
 }
 
 .btnEdit:hover {
     background-color: var(--color-accent);
+
     border-color: var(--color-accent);
+
     color: var(--color-dark);
 }
 
 
 /* =========================
-   BOTÃO REMOVER
-   ADMIN
+   REMOVER
 ========================= */
 
 .btnDelete {
     background-color: #fff0f0;
+
     color: var(--color-primary);
+
     border-color: #f1cccc;
 }
 
 .btnDelete:hover {
     background-color: var(--color-primary);
+
     border-color: var(--color-primary);
+
     color: var(--color-text-light);
 }
 
 
 /* =========================
-   BOTÃO CARRINHO
+   CARRINHO
 ========================= */
 
 .btnCarrinho {
     background-color: transparent;
+
     color: var(--color-primary);
+
     border-color: var(--color-primary);
 }
 
 .btnCarrinho:hover {
     background-color: var(--color-primary);
+
     border-color: var(--color-primary);
+
     color: var(--color-text-light);
 }
 
 
 /* =========================
-   BOTÃO COMPRAR AGORA
+   COMPRAR AGORA
 ========================= */
 
 .btnBuy {
     background-color: var(--color-primary);
+
     color: var(--color-text-light);
+
     border-color: var(--color-primary);
 }
 
 .btnBuy:hover {
     background-color: var(--color-primary-dark);
+
     border-color: var(--color-primary-dark);
-}
-
-
-/* =========================
-   ÍCONES
-========================= */
-
-.btnItem svg {
-    font-size: 14px;
 }
 
 
@@ -219,30 +327,45 @@
 
 @media (max-width: 600px) {
 
+    .card {
+        max-width: 250px;
+    }
+
     .image {
-        height: 220px;
+        height: 145px;
     }
 
     .info {
-        padding: 16px 16px 10px;
+        padding: 10px 12px 6px;
     }
 
     .info h2 {
-        font-size: 19px;
+        font-size: 16px;
     }
 
-    .info p {
-        font-size: 18px;
+    .info p,
+    .precoPromocional {
+        font-size: 15px;
     }
 
     .actions {
-        padding: 10px 16px 16px;
-        gap: 8px;
+        padding: 7px 12px 11px;
+
+        gap: 6px;
     }
 
     .btnItem {
-        min-height: 42px;
-        padding: 0 8px;
-        font-size: 12px;
+        min-height: 33px;
+
+        font-size: 9px;
+    }
+
+    .badgePromocao {
+        top: 8px;
+        left: 8px;
+
+        padding: 4px 7px;
+
+        font-size: 8px;
     }
 }
