@@ -1,40 +1,17 @@
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-
+.main {
     width: 100%;
-    height: 80px;
-
-    z-index: 1000;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 30px;
-
+    min-height: 100vh;
+    padding: 120px 30px 40px;
     box-sizing: border-box;
-
-    background-color: rgba(0, 0, 0, 0.78);
-
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-
-    box-shadow:
-        0 4px 18px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.03);
 }
 
 /* =========================
-   POPUP DE PROMOÇÕES
+   OVERLAY
 ========================= */
 
 .overlay {
     position: fixed;
     inset: 0;
-
     z-index: 9999;
 
     display: flex;
@@ -42,14 +19,19 @@
     justify-content: center;
 
     padding: 30px;
-
     box-sizing: border-box;
 
     background-color: rgba(0, 0, 0, 0.65);
 
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
+
+    animation: aparecer 0.2s ease;
 }
+
+/* =========================
+   MODAL
+========================= */
 
 .modal {
     width: 100%;
@@ -59,15 +41,23 @@
     display: flex;
     flex-direction: column;
 
+    box-sizing: border-box;
+
     background-color: var(--color-surface);
 
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
 
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-lg);
 
     overflow: hidden;
+
+    animation: subir 0.25s ease;
 }
+
+/* =========================
+   HEADER DO MODAL
+========================= */
 
 .modalHeader {
     display: flex;
@@ -78,7 +68,11 @@
 
     padding: 24px 28px;
 
+    box-sizing: border-box;
+
     border-bottom: 1px solid var(--color-border);
+
+    background-color: var(--color-surface);
 }
 
 .modalHeader h2 {
@@ -94,11 +88,16 @@
 .modalHeader p {
     margin: 0;
 
-    color: var(--color-text-secondary);
+    color: var(--color-text-muted);
 
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
+    line-height: 1.5;
 }
+
+/* =========================
+   BOTÃO FECHAR
+========================= */
 
 .btnFechar {
     width: 36px;
@@ -118,6 +117,7 @@
     background-color: #f1f1f1;
     color: #333;
 
+    font-family: Arial, sans-serif;
     font-size: 25px;
     line-height: 1;
 
@@ -136,6 +136,14 @@
     transform: rotate(90deg);
 }
 
+.btnFechar:active {
+    transform: rotate(90deg) scale(0.95);
+}
+
+/* =========================
+   CORPO DO MODAL
+========================= */
+
 .modalBody {
     width: 100%;
 
@@ -148,32 +156,81 @@
 }
 
 /* =========================
-   RESPONSIVIDADE
+   SCROLL
 ========================= */
 
-@media (max-width: 768px) {
-    .header {
-        height: 70px;
-        padding: 0 20px;
+.modalBody::-webkit-scrollbar {
+    width: 7px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+    background-color: var(--color-border);
+    border-radius: 10px;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-primary);
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
     }
 
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 900px) {
     .overlay {
         padding: 20px;
     }
 
+    .modal {
+        max-width: 100%;
+    }
+
     .modalHeader {
-        padding: 20px;
+        padding: 22px;
     }
 
     .modalBody {
-        padding: 20px;
+        padding: 22px;
     }
 }
 
+/* =========================
+   CELULAR
+========================= */
+
 @media (max-width: 600px) {
-    .header {
-        height: 65px;
-        padding: 0 12px;
+    .main {
+        padding: 100px 20px 30px;
     }
 
     .overlay {
@@ -182,10 +239,12 @@
 
     .modal {
         max-height: 94vh;
+        border-radius: 12px;
     }
 
     .modalHeader {
         padding: 18px;
+        gap: 12px;
     }
 
     .modalHeader h2 {
@@ -194,6 +253,12 @@
 
     .modalHeader p {
         font-size: 12px;
+    }
+
+    .btnFechar {
+        width: 34px;
+        height: 34px;
+        font-size: 23px;
     }
 
     .modalBody {

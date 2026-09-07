@@ -1,12 +1,237 @@
-.Meio {
-	width: fit-content;
-	max-width: 600px;
-	margin: 100px auto 40px;
-	padding: 32px 40px;
-	box-sizing: border-box;
-	display: flex;
-	flex-direction: column;
-	gap: 28px;
-	background-color: rgb(255, 248, 248);
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+.main {
+    width: 100%;
+    max-width: 1400px;
+    margin: 100px auto 40px;
+    padding: 0 30px;
+    box-sizing: border-box;
+}
+
+.topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+.topo h1 {
+    margin: 0 0 8px;
+    font-size: 32px;
+}
+
+.topo p {
+    margin: 0;
+    color: #666;
+}
+
+.botoes {
+    display: flex;
+    gap: 12px;
+}
+
+.btnProduto,
+.btnPromocao {
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnProduto {
+    background-color: #ff6b00;
+    color: white;
+}
+
+.btnProduto:hover {
+    background-color: #e85f00;
+}
+
+.btnPromocao {
+    background-color: #222;
+    color: white;
+}
+
+.btnPromocao:hover {
+    background-color: #000;
+}
+
+.cardapio {
+    width: 100%;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    background-color: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(5px);
+
+    animation: aparecer 0.2s ease;
+}
+
+.modal {
+    width: 100%;
+    max-width: 650px;
+    max-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+
+    background-color: #fff;
+    border-radius: 16px;
+
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+
+    overflow: hidden;
+
+    animation: subir 0.25s ease;
+}
+
+.modalHeader {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 24px 28px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.modalHeader h2 {
+    margin: 0 0 5px;
+    font-size: 22px;
+    color: #222;
+}
+
+.modalHeader p {
+    margin: 0;
+    color: #777;
+    font-size: 14px;
+}
+
+.btnFechar {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background-color: #f1f1f1;
+    color: #333;
+
+    font-size: 25px;
+    line-height: 1;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.btnFechar:hover {
+    background-color: #e5e5e5;
+    transform: rotate(90deg);
+}
+
+.modalBody {
+    padding: 28px;
+    overflow-y: auto;
+}
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes subir {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media (max-width: 800px) {
+    .topo {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .botoes {
+        width: 100%;
+    }
+
+    .btnProduto,
+    .btnPromocao {
+        flex: 1;
+    }
+}
+
+@media (max-width: 600px) {
+    .main {
+        margin-top: 90px;
+        padding: 0 20px;
+    }
+
+    .botoes {
+        flex-direction: column;
+    }
+
+    .btnProduto,
+    .btnPromocao {
+        width: 100%;
+    }
+
+    .overlay {
+        padding: 15px;
+    }
+
+    .modal {
+        max-height: 95vh;
+        border-radius: 12px;
+    }
+
+    .modalHeader {
+        padding: 20px;
+    }
+
+    .modalBody {
+        padding: 20px;
+    }
 }

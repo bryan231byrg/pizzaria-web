@@ -1,128 +1,276 @@
+/* =========================
+   CARDÁPIO
+========================= */
+
 .Cardapio {
     width: 100%;
-    padding: 50px 30px 80px;
+
+    padding: 45px 40px 70px;
+
+    display: flex;
+    flex-direction: column;
+
     background-color: var(--color-background);
+
+    box-sizing: border-box;
 }
 
+
+/* =========================
+   INTRODUÇÃO
+========================= */
+
 .intro {
-    max-width: 750px;
-    margin: 0 auto 50px;
+    width: 100%;
+    max-width: 800px;
+
+    margin: 0 auto 45px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     text-align: center;
 }
 
 .intro span {
+    margin-bottom: 12px;
+
     display: inline-flex;
     align-items: center;
-    gap: 8px;
 
-    margin-bottom: 16px;
+    gap: 7px;
 
     color: var(--color-primary);
-    font-size: 14px;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: 3px;
+
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
 }
 
 .intro span svg {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .intro h1 {
-    margin-bottom: 18px;
+    margin: 0 0 14px;
 
     color: var(--color-dark);
-    font-size: clamp(32px, 5vw, 50px);
+
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(30px, 4vw, 44px);
     font-weight: 700;
+
+    line-height: 1.2;
 }
 
 .intro p {
+    width: 100%;
     max-width: 600px;
-    margin: 0 auto;
+
+    margin: 0;
 
     color: var(--color-text-secondary);
-    font-size: 16px;
-    line-height: 1.8;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+
+    line-height: 1.7;
 }
+
+
+/* =========================
+   CATEGORIAS
+========================= */
 
 .categorias {
     width: 100%;
 
     display: flex;
     flex-direction: column;
-    gap: 50px;
+
+    gap: 42px;
 }
+
+
+/* =========================
+   CADA CATEGORIA
+========================= */
 
 .categorias article {
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
 }
 
+
+/* =========================
+   TÍTULO DA CATEGORIA
+========================= */
+
 .categorias article h4 {
+    width: 100%;
+
+    margin: 0 0 18px;
+
     display: flex;
     align-items: center;
-    gap: 10px;
 
-    margin-bottom: 25px;
+    gap: 9px;
 
     color: var(--color-dark);
-    font-size: 25px;
+
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
     font-weight: 700;
+
+    line-height: 1.2;
 }
 
 .categorias article h4 svg {
+    flex-shrink: 0;
+
     color: var(--color-primary);
-    font-size: 21px;
+
+    font-size: 18px;
 }
+
+
+/* =========================
+   PRIMEIRA CATEGORIA
+========================= */
 
 .categorias article:first-child h4 {
     color: var(--color-primary);
 }
 
 
-@media (max-width: 1000px) {
+/* =========================
+   LINHA DECORATIVA
+========================= */
 
-    .Cardapio {
-        padding: 45px 5% 60px;
-    }
+.categorias article h4::after {
+    content: "";
 
-    .intro {
-        margin-bottom: 45px;
-    }
+    flex: 1;
 
-    .categorias {
-        gap: 45px;
-    }
+    height: 1px;
+
+    margin-left: 6px;
+
+    background-color: var(--color-border);
 }
 
 
-@media (max-width: 600px) {
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 1000px) {
 
     .Cardapio {
-        padding: 40px 20px 50px;
+        padding: 40px 30px 60px;
     }
 
     .intro {
         margin-bottom: 40px;
     }
 
+    .categorias {
+        gap: 38px;
+    }
+
+    .categorias article h4 {
+        font-size: 21px;
+    }
+}
+
+
+@media (max-width: 700px) {
+
+    .Cardapio {
+        padding: 35px 22px 50px;
+    }
+
+    .intro {
+        margin-bottom: 35px;
+    }
+
     .intro span {
-        font-size: 12px;
+        font-size: 11px;
         letter-spacing: 2px;
     }
 
     .intro h1 {
-        font-size: 34px;
+        font-size: 32px;
     }
 
     .intro p {
-        font-size: 14px;
+        font-size: 13px;
     }
 
     .categorias {
-        gap: 40px;
+        gap: 34px;
     }
 
     .categorias article h4 {
-        margin-bottom: 20px;
-        font-size: 22px;
+        margin-bottom: 16px;
+
+        font-size: 20px;
+    }
+
+    .categorias article h4 svg {
+        font-size: 17px;
+    }
+}
+
+
+@media (max-width: 500px) {
+
+    .Cardapio {
+        padding: 30px 16px 45px;
+    }
+
+    .intro {
+        margin-bottom: 30px;
+    }
+
+    .intro span {
+        margin-bottom: 10px;
+
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .intro h1 {
+        margin-bottom: 12px;
+
+        font-size: 29px;
+    }
+
+    .intro p {
+        font-size: 12px;
+        line-height: 1.6;
+    }
+
+    .categorias {
+        gap: 30px;
+    }
+
+    .categorias article h4 {
+        margin-bottom: 14px;
+
+        gap: 7px;
+
+        font-size: 18px;
+    }
+
+    .categorias article h4 svg {
+        font-size: 15px;
     }
 }

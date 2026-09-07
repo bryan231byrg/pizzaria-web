@@ -2,28 +2,61 @@ import StyleProductList from "./style.module.css";
 
 import ProductItem from "../../atoms/ProductItem";
 
-function ProductList({ products, setProducts, categoria, busca = "" }) {
+function ProductList({
+products = [],
+setProducts,
+categoria,
+busca = "",
+somentePromocoes = false
+}) {
 
-    const produtosFiltrados = products.filter(
-        (product) =>
-            product.categoria === categoria &&
-            product.nome?.toLowerCase().includes(busca.toLowerCase())
+const promocoes =
+    JSON.parse(localStorage.getItem("promocoes")) || [];
+
+const produtosFiltrados = products.filter((product) => {
+
+    if (!product) {
+        return false;
+    }
+
+    const promocao = promocoes.find(
+        (p) => p.productId === product.id
     );
+
+    if (somentePromocoes && !promocao) {
+        return false;
+    }
 
     return (
-        <section className={StyleProductList.list}>
-            {produtosFiltrados.map((product) => {
-                return (
-                    <ProductItem
-                        key={product.id}
-                        product={product}
-                        products={products}
-                        setProducts={setProducts}
-                    />
-                );
-            })}
-        </section>
+        (!categoria || product.categoria === categoria) &&
+        product.nome?.toLowerCase().includes(busca.toLowerCase())
     );
+});
+
+return (
+    <section className={StyleProductList.list}>
+
+        {produtosFiltrados.map((product) => {
+
+            const promocao = promocoes.find(
+                (p) => p.productId === product.id
+            );
+
+            return (
+                <ProductItem
+                    key={product.id}
+                    product={product}
+                    products={products}
+                    setProducts={setProducts}
+                    promocao={promocao}
+                />
+            );
+
+        })}
+
+    </section>
+);
+
 }
 
 export default ProductList;

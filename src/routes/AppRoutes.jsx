@@ -8,6 +8,7 @@ import Carrinho from "../pages/Client/Carrinho/";
 import FinalizarPedido from "../pages/Client/FinalizarPedido/";
 import Login from "../pages/Client/Login/index.jsx";
 import Cadastro from "../pages/Client/Cadastro/index.jsx";
+import Promocoes from "../pages/Client/Promocoes/index.jsx";
 
 // Administrador (Privado)
 import Dashboard from "../pages/admin/Dashboard/";
@@ -28,6 +29,7 @@ function AppRoutes() {
           <Route path="/finalizarpedido" element={<FinalizarPedido />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
+          <Route path="/promocoes" element={<Promocoes />} />
 
           {/* Rota Privada (Adminitrador) */}~
           <Route element={<PrivateRoute />}>
