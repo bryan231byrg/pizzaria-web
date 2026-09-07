@@ -1,0 +1,141 @@
+.footer {
+    width: 100%;
+    padding: 50px 7% 20px;
+    background-color: #111;
+    color: #fff;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 40px;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.brand h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.brand p {
+    max-width: 300px;
+    margin: 0;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.navigation h3 {
+    margin: 0 0 8px;
+}
+
+.navigation nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.navigation nav a {
+    width: fit-content;
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.navigation nav a:hover {
+    color: #ff6b00;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact h3 {
+    margin: 0 0 8px;
+}
+
+.contact p {
+    margin: 0;
+    color: #aaa;
+}
+
+.social {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.social h3 {
+    margin: 0;
+}
+
+.socialIcons {
+    display: flex;
+    gap: 12px;
+}
+
+.socialIcons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #333;
+    border-radius: 50%;
+    color: #aaa;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.socialIcons a:hover {
+    color: #ff6b00;
+    border-color: #ff6b00;
+}
+
+.copyright {
+    grid-column: 1 / -1;
+    padding-top: 20px;
+    border-top: 1px solid #292929;
+    text-align: center;
+}
+
+.copyright p {
+    margin: 0;
+    color: #777;
+    font-size: 13px;
+}
+
+@media (max-width: 800px) {
+    .footer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 500px) {
+    .footer {
+        grid-template-columns: 1fr;
+        padding: 40px 7% 20px;
+    }
+
+    .brand {
+        grid-column: auto;
+    }
+
+    .copyright {
+        grid-column: auto;
+    }
+}

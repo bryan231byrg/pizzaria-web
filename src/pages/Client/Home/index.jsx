@@ -3,6 +3,7 @@ import { useState } from "react";
 import Header from "../../../components/organism/Header";
 import Cardapio from "../Cardapio";
 import StyleHome from "./style.module.css";
+import Footer from "../../../components/organism/Footer";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../../../components/atoms/Logo";
@@ -21,10 +22,10 @@ export default function Home() {
             <Header />
 
             <main>
-                <section className={StyleHome.hero}>
+                <section id="inicio" className={StyleHome.hero}>
                     <div className={StyleHome.heroContent}>
                         <div className={StyleHome.logo}>
-                            <Logo></Logo>
+                            <Logo />
                         </div>
                     </div>
                 </section>
@@ -54,11 +55,15 @@ export default function Home() {
                     >
                         <option value="">📋 Lista de categorias</option>
                         <option value="Destaques">⭐ Destaques</option>
-                        <option value="Oferta Limitada">🔥 Oferta Limitada</option>
+                        <option value="Oferta Limitada">
+                            🔥 Oferta Limitada
+                        </option>
                         <option value="Promoções">🏷️ Promoções</option>
                         <option value="Pizza Grande">🍕 Pizza Grande</option>
                         <option value="Pizza Pequena">🍕 Pizza Pequena</option>
-                        <option value="Calzone Grande">🥟 Calzone Grande</option>
+                        <option value="Calzone Grande">
+                            🥟 Calzone Grande
+                        </option>
                         <option value="Bebidas">🥤 Bebidas</option>
                     </select>
 
@@ -73,13 +78,16 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className={StyleHome.Cardapio}>
+                <section id="cardapio" className={StyleHome.Cardapio}>
                     <Cardapio
                         categoria={categoria}
                         busca={busca}
                     />
                 </section>
             </main>
+
+            {/* Footer */}
+            <Footer />
         </>
     );
 }

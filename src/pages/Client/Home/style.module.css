@@ -13,8 +13,10 @@
     background-image: url("../../../assets/banner.jpeg");
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
 }
+
 
 /* =========================
    LOGO
@@ -31,6 +33,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    background-color: white;
+    border-radius: 50%;
+    padding: 5px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
 }
 
 .logo img {
@@ -39,7 +47,10 @@
 
     object-fit: contain;
     display: block;
+
+    border-radius: 50%;
 }
+
 
 /* =========================
    INFORMAÇÕES DA PIZZARIA
@@ -51,15 +62,19 @@
 
 .restaurantInfo h1 {
     margin: 0;
+
     color: #1d3557;
     font-size: 32px;
+    font-weight: 700;
 }
 
 .info {
     margin-top: 10px;
+
     display: flex;
     align-items: center;
     gap: 12px;
+
     color: #697586;
     font-size: 14px;
 }
@@ -73,33 +88,46 @@
     font-weight: 600;
 }
 
+
 /* =========================
    FILTROS
 ========================= */
 
 .filters {
     padding: 30px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    gap: 20px;
 }
 
 .categories {
     width: 200px;
     height: 44px;
+
     padding: 0 12px;
+
     background-color: white;
+
     border: 1px solid #d9dce1;
     border-radius: 6px;
+
     color: #536174;
     font-size: 14px;
+
     cursor: pointer;
     outline: none;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .categories:focus {
     border-color: #ff6b00;
+    box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.1);
 }
+
 
 /* =========================
    BUSCA
@@ -108,6 +136,7 @@
 .search {
     width: 310px;
     height: 44px;
+
     padding: 0 12px;
 
     display: flex;
@@ -115,21 +144,137 @@
     gap: 10px;
 
     background-color: white;
+
     border: 1px solid #d9dce1;
     border-radius: 6px;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search:focus-within {
+    border-color: #ff6b00;
+    box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.1);
 }
 
 .search svg {
     color: #697586;
+    flex-shrink: 0;
 }
 
 .search input {
     width: 100%;
+
     border: none;
     outline: none;
+
+    background: transparent;
+
     font-size: 14px;
+    color: #1d3557;
 }
 
 .search input::placeholder {
     color: #697586;
+}
+
+
+/* =========================
+   CARDÁPIO
+========================= */
+
+.Cardapio {
+    padding: 0 30px 50px;
+}
+
+
+/* =========================
+   RESPONSIVIDADE
+========================= */
+
+@media (max-width: 768px) {
+
+    .hero {
+        padding: 15px 15px 0;
+    }
+
+    .heroContent {
+        height: 250px;
+        border-radius: 12px;
+    }
+
+    .logo {
+        width: 120px;
+        height: 120px;
+
+        left: 25px;
+        bottom: -60px;
+    }
+
+    .restaurantInfo {
+        padding: 75px 15px 0;
+    }
+
+    .restaurantInfo h1 {
+        font-size: 25px;
+    }
+
+    .info {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .filters {
+        padding: 25px 15px;
+
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .categories {
+        width: 100%;
+    }
+
+    .search {
+        width: auto;
+    }
+
+    .Cardapio {
+        padding: 0 15px 40px;
+    }
+}
+
+
+/* =========================
+   TELAS PEQUENAS
+========================= */
+
+@media (max-width: 480px) {
+
+    .heroContent {
+        height: 200px;
+    }
+
+    .logo {
+        width: 100px;
+        height: 100px;
+
+        left: 20px;
+        bottom: -50px;
+    }
+
+    .restaurantInfo {
+        padding-top: 65px;
+    }
+
+    .restaurantInfo h1 {
+        font-size: 22px;
+    }
+
+    .info {
+        font-size: 13px;
+    }
+
+    .filters {
+        gap: 12px;
+    }
 }
