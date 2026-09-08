@@ -1,6 +1,7 @@
 import ProductList from "../../../components/molecules/ProductList";
+
 import StyleCardapio from "./style.module.css";
-import { useState, useEffect } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
@@ -11,29 +12,55 @@ import {
     faBottleWater
 } from "@fortawesome/free-solid-svg-icons";
 
-export default function Cardapio({ categoria, busca }) {
-    const [products, setProducts] = useState([]);
-
-    useEffect(() => {
-        const productsSaveds = localStorage.getItem("products");
-
-        if (productsSaveds) {
-            setProducts(JSON.parse(productsSaveds));
-        }
-    }, []);
-
+export default function Cardapio({
+    categoria,
+    busca,
+    products,
+    setProducts,
+    onEdit
+}) {
     const categorias = [
-        { nome: "Destaques", titulo: "Destaques", icon: faStar },
-        { nome: "Oferta Limitada", titulo: "Oferta LIMITADA", icon: faFire },
-        { nome: "Promoções", titulo: "Promoções do dia", icon: faTag },
-        { nome: "Pizza Grande", titulo: "Pizzas | Grande", icon: faPizzaSlice },
-        { nome: "Pizza Pequena", titulo: "Pizzas | Pequena", icon: faPizzaSlice },
-        { nome: "Calzone Grande", titulo: "Calzones | Grande", icon: faPizzaSlice },
-        { nome: "Bebidas", titulo: "Bebidas", icon: faBottleWater }
+        {
+            nome: "Destaques",
+            titulo: "Destaques",
+            icon: faStar
+        },
+        {
+            nome: "Oferta Limitada",
+            titulo: "Oferta LIMITADA",
+            icon: faFire
+        },
+        {
+            nome: "Promoções",
+            titulo: "Promoções do dia",
+            icon: faTag
+        },
+        {
+            nome: "Pizza Grande",
+            titulo: "Pizzas | Grande",
+            icon: faPizzaSlice
+        },
+        {
+            nome: "Pizza Pequena",
+            titulo: "Pizzas | Pequena",
+            icon: faPizzaSlice
+        },
+        {
+            nome: "Calzone Grande",
+            titulo: "Calzones | Grande",
+            icon: faPizzaSlice
+        },
+        {
+            nome: "Bebidas",
+            titulo: "Bebidas",
+            icon: faBottleWater
+        }
     ];
 
     const categoriasExibidas = categoria
-        ? categorias.filter((item) => item.nome === categoria)
+        ? categorias.filter(
+            (item) => item.nome === categoria
+        )
         : categorias;
 
     return (
@@ -51,6 +78,7 @@ export default function Cardapio({ categoria, busca }) {
                             setProducts={setProducts}
                             categoria={item.nome}
                             busca={busca}
+                            onEdit={onEdit}
                         />
                     </article>
                 ))}

@@ -1,7 +1,5 @@
 import StyleProductItem from "./style.module.css";
 
-import { useNavigate } from "react-router-dom";
-
 import useAuth from "../../../Contexts/AuthContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,10 +16,9 @@ export default function ProductItem({
     product,
     products = [],
     setProducts,
-    promocao
+    promocao,
+    onEdit
 }) {
-    const navigate = useNavigate();
-
     const { user } = useAuth();
 
     const hoje = new Date()
@@ -39,11 +36,6 @@ export default function ProductItem({
     const precoFinal = promocaoAtiva
         ? Number(promocao.valor)
         : Number(product.preco);
-
-
-    /* =========================
-       REMOVER PRODUTO
-    ========================= */
 
     const deleteProduct = () => {
         const productFiltered = products.filter(
@@ -71,11 +63,6 @@ export default function ProductItem({
         );
     };
 
-
-    /* =========================
-       REMOVER PROMOÇÃO
-    ========================= */
-
     const removePromotion = () => {
         const promocoes =
             JSON.parse(localStorage.getItem("promocoes")) || [];
@@ -93,21 +80,11 @@ export default function ProductItem({
         window.location.reload();
     };
 
-
-    /* =========================
-       EDITAR PRODUTO
-    ========================= */
-
     const editProduct = () => {
-        navigate(
-            `/admin/produtos/${product.id}/editar`
-        );
+        if (typeof onEdit === "function") {
+            onEdit(product);
+        }
     };
-
-
-    /* =========================
-       ADICIONAR AO CARRINHO
-    ========================= */
 
     const addToCarrinho = () => {
         const carrinho =
@@ -125,8 +102,7 @@ export default function ProductItem({
                     ? {
                         ...item,
                         precoAplicado: precoFinal,
-                        quantidade:
-                            item.quantidade + 1
+                        quantidade: item.quantidade + 1
                     }
                     : item
             );
@@ -147,11 +123,6 @@ export default function ProductItem({
         );
     };
 
-
-    /* =========================
-       COMPRAR AGORA
-    ========================= */
-
     const buyNow = () => {
         console.log(
             "Comprar agora:",
@@ -159,11 +130,8 @@ export default function ProductItem({
         );
     };
 
-
     return (
-        <article
-            className={StyleProductItem.card}
-        >
+        <article className={StyleProductItem.card}>
             {promocaoAtiva && (
                 <span
                     className={
@@ -171,7 +139,6 @@ export default function ProductItem({
                     }
                 >
                     <FontAwesomeIcon icon={faTag} />
-
                     Promoção
                 </span>
             )}
@@ -182,11 +149,7 @@ export default function ProductItem({
                 className={StyleProductItem.image}
             />
 
-            <div
-                className={
-                    StyleProductItem.info
-                }
-            >
+            <div className={StyleProductItem.info}>
                 <h2>
                     {product.nome}
                 </h2>
@@ -226,24 +189,14 @@ export default function ProductItem({
                 )}
             </div>
 
-
-            {/* =========================
-                ÁREA ADMIN
-            ========================= */}
-
             {user?.tipo === "admin" ? (
-                <div
-                    className={
-                        StyleProductItem.actions
-                    }
-                >
+                <div className={StyleProductItem.actions}>
                     <button
                         type="button"
                         onClick={editProduct}
                         className={`${StyleProductItem.btnItem} ${StyleProductItem.btnEdit}`}
                     >
                         <FontAwesomeIcon icon={faPen} />
-
                         Editar
                     </button>
 
@@ -253,7 +206,6 @@ export default function ProductItem({
                         className={`${StyleProductItem.btnItem} ${StyleProductItem.btnDelete}`}
                     >
                         <FontAwesomeIcon icon={faTrash} />
-
                         Remover
                     </button>
 
@@ -264,31 +216,18 @@ export default function ProductItem({
                             className={`${StyleProductItem.btnItem} ${StyleProductItem.btnDelete}`}
                         >
                             <FontAwesomeIcon icon={faTag} />
-
                             Remover promoção
                         </button>
                     )}
                 </div>
             ) : (
-
-                /* =========================
-                   ÁREA CLIENTE
-                ========================= */
-
-                <div
-                    className={
-                        StyleProductItem.actions
-                    }
-                >
+                <div className={StyleProductItem.actions}>
                     <button
                         type="button"
                         onClick={addToCarrinho}
                         className={`${StyleProductItem.btnItem} ${StyleProductItem.btnCarrinho}`}
                     >
-                        <FontAwesomeIcon
-                            icon={faCartPlus}
-                        />
-
+                        <FontAwesomeIcon icon={faCartPlus} />
                         Carrinho
                     </button>
 
@@ -297,10 +236,7 @@ export default function ProductItem({
                         onClick={buyNow}
                         className={`${StyleProductItem.btnItem} ${StyleProductItem.btnBuy}`}
                     >
-                        <FontAwesomeIcon
-                            icon={faBolt}
-                        />
-
+                        <FontAwesomeIcon icon={faBolt} />
                         Comprar agora
                     </button>
                 </div>

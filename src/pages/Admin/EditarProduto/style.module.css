@@ -1,0 +1,358 @@
+.container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 28px;
+    background: #fff;
+    border-radius: 18px;
+}
+
+.header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.header h1,
+.header p {
+    margin: 0;
+}
+
+.header h1 {
+    font-size: 23px;
+    font-weight: 700;
+    color: #171717;
+    letter-spacing: -0.3px;
+}
+
+.header p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: #888;
+}
+
+.btnClose {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #eeeeee;
+    border-radius: 10px;
+
+    background: #fafafa;
+    color: #777;
+
+    cursor: pointer;
+    font-size: 16px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.btnClose:hover {
+    background: #fff1e8;
+    border-color: #fed7aa;
+    color: #f97316;
+    transform: rotate(3deg);
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.input {
+    width: 100%;
+}
+
+.input fieldset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.input legend,
+.input label {
+    display: block;
+    margin-bottom: 7px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+}
+
+.input input,
+.input select {
+    width: 100%;
+    height: 46px;
+
+    box-sizing: border-box;
+    padding: 0 13px;
+
+    border: 1px solid #dedede;
+    border-radius: 10px;
+
+    background: #fff;
+    color: #333;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.input input::placeholder {
+    color: #aaa;
+}
+
+.input input:hover,
+.input select:hover {
+    border-color: #cfcfcf;
+    background: #fdfdfd;
+}
+
+.input input:focus,
+.input select:focus {
+    outline: none;
+    border-color: #f97316;
+    background: #fff;
+
+    box-shadow:
+        0 0 0 3px rgba(249, 115, 22, 0.10);
+}
+
+.input select {
+    padding-right: 42px;
+
+    cursor: pointer;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 15px;
+}
+
+.input select:hover {
+    background-color: #fffaf7;
+}
+
+.input select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f97316' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+}
+
+.input select option {
+    background: #fff;
+    color: #333;
+}
+
+.input select option:checked {
+    color: #f97316;
+}
+
+.input input[type="file"] {
+    height: auto;
+    min-height: 46px;
+
+    padding: 6px;
+
+    cursor: pointer;
+}
+
+.input input[type="file"]::file-selector-button {
+    margin-right: 10px;
+
+    padding: 8px 13px;
+
+    border: 0;
+    border-radius: 7px;
+
+    background: #fff1e8;
+    color: #f97316;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.input input[type="file"]::file-selector-button:hover {
+    background: #ffe4d2;
+    transform: translateY(-1px);
+}
+
+.preview {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 10px;
+    padding: 12px;
+
+    border: 1px solid #eeeeee;
+    border-radius: 12px;
+
+    background: #fafafa;
+}
+
+.preview span {
+    flex: 1;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+}
+
+.preview img {
+    width: 64px;
+    height: 64px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+    border: 1px solid #e5e5e5;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+
+    margin-top: 5px;
+    padding-top: 20px;
+
+    border-top: 1px solid #eeeeee;
+}
+
+.btnCancelar,
+.btnSubmit {
+    width: 100%;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    border: 0;
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.15s ease,
+        box-shadow 0.2s ease;
+}
+
+.btnCancelar {
+    background: #f1f1f1;
+    color: #555;
+}
+
+.btnCancelar:hover {
+    background: #e7e7e7;
+    color: #333;
+}
+
+.btnSubmit {
+    background: #f97316;
+    color: #fff;
+
+    box-shadow:
+        0 4px 12px rgba(249, 115, 22, 0.18);
+}
+
+.btnSubmit:hover {
+    background: #ea580c;
+
+    box-shadow:
+        0 6px 16px rgba(234, 88, 12, 0.24);
+
+    transform: translateY(-1px);
+}
+
+.btnCancelar:active,
+.btnSubmit:active {
+    transform: scale(0.98);
+}
+
+.erro {
+    display: flex;
+    align-items: center;
+
+    margin: 0 0 18px;
+    padding: 11px 13px;
+
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+
+    background: #fef2f2;
+    color: #dc2626;
+
+    font-size: 13px;
+    font-weight: 500;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        border-radius: 14px;
+    }
+
+    .header {
+        margin-bottom: 20px;
+    }
+
+    .header h1 {
+        font-size: 20px;
+    }
+
+    .header p {
+        font-size: 12px;
+    }
+
+    .actions {
+        flex-direction: column;
+    }
+
+    .preview {
+        align-items: center;
+    }
+}
