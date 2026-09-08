@@ -13,8 +13,7 @@ import Promocoes from "../pages/Client/Promocoes/index.jsx";
 // Administrador (Privado)
 import Dashboard from "../pages/admin/Dashboard/";
 import Produtos from "../pages/admin/Produtos/";
-import NovoProduto from "../pages/admin/NovoProduto/";
-import EditarProduto from "../pages/admin/EditarProduto/";
+import EditarProduto from "../pages/Admin/EditarProduto/";
 import Categorias from "../pages/admin/Categorias/";
 import Configuracoes from "../pages/admin/Configuracoes/";
 
@@ -35,7 +34,6 @@ function AppRoutes() {
           <Route element={<PrivateRoute />}>
               <Route path="/admin" element={<Dashboard />} />
               <Route path="/admin/produtos" element={<Produtos />} />
-              <Route path="/admin/produtos/novo" element={<NovoProduto />} />
               <Route path="/admin/produtos/:id/editar" element={<EditarProduto />} />
               <Route path="/admin/categorias" element={<Categorias />} />
               <Route path="/admin/configuracoes" element={<Configuracoes />} />
