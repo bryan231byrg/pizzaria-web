@@ -4,13 +4,21 @@
 
 .nav {
     width: 100%;
+    min-height: 58px;
 
     display: flex;
     align-items: center;
 
-    background: transparent;
-    border: none;
-    box-shadow: none;
+    background: rgba(20, 20, 20, 0.72);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 
@@ -35,18 +43,10 @@
 
 
 /* =========================
-   CADA ITEM
+   ITENS
 ========================= */
 
-/*
-   Cada item ocupa uma parte
-   igual da navegação.
-
-   O link dentro dele continua
-   com tamanho compacto.
-*/
-
-.navList > * {
+.navList > li {
     flex: 1 1 0;
 
     min-width: 0;
@@ -61,28 +61,19 @@
    LINKS
 ========================= */
 
-/*
-   IMPORTANTE:
-   width NÃO é 100%.
-
-   Assim o espaço da navegação
-   continua grande, mas o botão
-   fica menor.
-*/
-
 .navList a {
     position: relative;
 
     width: auto;
-    min-height: 42px;
+    min-height: 50px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 9px;
+    gap: 10px;
 
-    padding: 0 16px;
+    padding: 0 18px;
 
     box-sizing: border-box;
 
@@ -137,7 +128,7 @@
 
 
 /* =========================
-   HOVER LINKS
+   HOVER
 ========================= */
 
 .navList a:hover {
@@ -161,13 +152,24 @@
 
 
 /* =========================
+   CLIQUE
+========================= */
+
+.navList a:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+/* =========================
    ÍCONES
 ========================= */
 
-.navList svg {
-    font-size: 15px;
-
+.navList a svg {
     flex-shrink: 0;
+
+    font-size: 15px;
 
     transition:
         transform 0.25s ease,
@@ -181,7 +183,7 @@
 
 
 /* =========================
-   USUÁRIO
+   MENU USUÁRIO
 ========================= */
 
 .userMenu {
@@ -190,22 +192,22 @@
 
 
 /* =========================
-   BOTÃO DO USUÁRIO
+   BOTÃO USUÁRIO
 ========================= */
 
 .userButton {
     position: relative;
 
     width: auto;
-    min-height: 42px;
+    min-height: 50px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 9px;
+    gap: 10px;
 
-    padding: 0 16px;
+    padding: 0 18px;
 
     box-sizing: border-box;
 
@@ -234,7 +236,7 @@
 
 
 /* =========================
-   LINHA DO BOTÃO USUÁRIO
+   LINHA USUÁRIO
 ========================= */
 
 .userButton::after {
@@ -283,6 +285,26 @@
 
 
 /* =========================
+   ÍCONE USUÁRIO
+========================= */
+
+.userButton svg {
+    flex-shrink: 0;
+
+    font-size: 15px;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+
+.userButton:hover svg {
+    transform: translateY(-1px);
+}
+
+
+/* =========================
    SETA
 ========================= */
 
@@ -322,14 +344,18 @@
 
     box-sizing: border-box;
 
-    background-color: var(--color-dark);
+    background-color: rgba(0, 0, 0, 0.88);
 
-    border: 1px solid rgba(229, 162, 60, 0.3);
+    border: 1px solid rgba(229, 162, 60, 0.25);
 
     border-radius: 9px;
 
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
     box-shadow:
-        0 8px 20px rgba(0, 0, 0, 0.3);
+        0 8px 20px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
     z-index: 1000;
 
@@ -338,11 +364,10 @@
 
 
 /* =========================
-   ANIMAÇÃO DROPDOWN
+   ANIMAÇÃO
 ========================= */
 
 @keyframes dropdownOpen {
-
     from {
         opacity: 0;
         transform: translateY(-4px);
@@ -352,7 +377,6 @@
         opacity: 1;
         transform: translateY(0);
     }
-
 }
 
 
@@ -360,7 +384,7 @@
    ITENS DROPDOWN
 ========================= */
 
-.dropdown a,
+.dropdownLink,
 .logoutButton {
     width: 100%;
 
@@ -403,11 +427,11 @@
    HOVER DROPDOWN
 ========================= */
 
-.dropdown a:hover,
+.dropdownLink:hover,
 .logoutButton:hover {
     color: var(--color-accent);
 
-    background-color: rgba(229, 162, 60, 0.08);
+    background-color: rgba(255, 255, 255, 0.06);
 
     border-color: rgba(229, 162, 60, 0.12);
 
@@ -419,7 +443,7 @@
    CLIQUE DROPDOWN
 ========================= */
 
-.dropdown a:active,
+.dropdownLink:active,
 .logoutButton:active {
     transform: translateX(0);
 }
@@ -431,12 +455,16 @@
 
 @media (max-width: 768px) {
 
+    .nav {
+        min-height: 54px;
+    }
+
     .navList {
         gap: 4px;
     }
 
     .navList a {
-        min-height: 40px;
+        min-height: 46px;
 
         padding: 0 12px;
 
@@ -445,24 +473,27 @@
         font-size: 14px;
     }
 
-    .navList svg {
+    .navList a svg {
         font-size: 14px;
     }
 
     .userButton {
-        min-height: 40px;
+        min-height: 46px;
 
         padding: 0 12px;
 
         gap: 7px;
 
+        font-size: 14px;
+    }
+
+    .userButton svg {
         font-size: 14px;
     }
 
     .dropdown {
         width: 175px;
     }
-
 }
 
 
@@ -472,12 +503,16 @@
 
 @media (max-width: 500px) {
 
+    .nav {
+        min-height: 48px;
+    }
+
     .navList {
         gap: 2px;
     }
 
     .navList a {
-        min-height: 36px;
+        min-height: 42px;
 
         padding: 0 7px;
 
@@ -486,18 +521,22 @@
         font-size: 11px;
     }
 
-    .navList svg {
+    .navList a svg {
         font-size: 12px;
     }
 
     .userButton {
-        min-height: 36px;
+        min-height: 42px;
 
         padding: 0 7px;
 
         gap: 5px;
 
         font-size: 11px;
+    }
+
+    .userButton svg {
+        font-size: 12px;
     }
 
     .arrow,
@@ -509,4 +548,10 @@
         width: 155px;
     }
 
+    .dropdownLink,
+    .logoutButton {
+        min-height: 35px;
+
+        font-size: 11px;
+    }
 }

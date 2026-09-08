@@ -1,43 +1,82 @@
 .main {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 120px 20px 40px;
-
-    background-color: var(--color-background);
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 .cadastro {
     width: 100%;
-    max-width: 460px;
-    padding: 40px;
-
-    background-color: var(--color-surface);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
-    border-top: 4px solid var(--color-primary);
+    margin: 0;
+    padding: 0;
 }
 
-.header {
-    text-align: center;
-    margin-bottom: 32px;
-}
 
-.header h1 {
-    margin-bottom: 10px;
+/* =========================
+   LOGIN
+========================= */
 
-    font-size: 32px;
-    font-weight: 700;
-    color: var(--color-dark);
-}
-
-.header p {
-    font-size: 15px;
-    line-height: 1.6;
-    color: var(--color-text-secondary);
-}
-
-.form {
+.login {
     width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    margin-top: 16px;
+
+    text-align: center;
+}
+
+.login span {
+    margin: 0;
+
+    color: var(--color-text-secondary);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.login button {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--color-primary);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.login button:hover {
+    color: var(--color-primary-dark);
+    opacity: 0.8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+
+    .login {
+        margin-top: 14px;
+    }
+
+    .login span,
+    .login button {
+        font-size: 12px;
+    }
 }

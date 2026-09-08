@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import { Link } from "react-router-dom";
 
 import ItemNav from "../../atoms/ItemNav";
+
 import StyleClientNav from "./style.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,31 +18,25 @@ import {
 
 import useAuth from "../../../Contexts/AuthContext.jsx";
 
-function ClientNav({ onCartClick, onPromotionClick }) {
+function ClientNav({
+    onCartClick,
+    onPromotionClick,
+    onLoginClick
+}) {
     const { user, logOut } = useAuth();
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-
-    const navigate = useNavigate();
+    const [dropdownOpen, setDropdownOpen] =
+        useState(false);
 
     function handleLogout() {
         setDropdownOpen(false);
 
-        navigate("/", {
-            replace: true
-        });
-
         logOut();
-    }
-
-    function handleLogin() {
-        navigate("/login");
     }
 
     return (
         <nav className={StyleClientNav.nav}>
             <ul className={StyleClientNav.navList}>
-
                 <ItemNav to="/">
                     <FontAwesomeIcon icon={faHouse} />
                     Início
@@ -63,21 +59,33 @@ function ClientNav({ onCartClick, onPromotionClick }) {
                         onClick={onCartClick}
                         className={StyleClientNav.navButton}
                     >
-                        <FontAwesomeIcon icon={faCartShopping} />
+                        <FontAwesomeIcon
+                            icon={faCartShopping}
+                        />
                         Carrinho
                     </button>
                 </li>
 
                 {user ? (
-                    <li className={StyleClientNav.userMenu}>
+                    <li
+                        className={
+                            StyleClientNav.userMenu
+                        }
+                    >
                         <button
                             type="button"
-                            className={StyleClientNav.navButton}
+                            className={
+                                StyleClientNav.navButton
+                            }
                             onClick={() =>
-                                setDropdownOpen(!dropdownOpen)
+                                setDropdownOpen(
+                                    !dropdownOpen
+                                )
                             }
                         >
-                            <FontAwesomeIcon icon={faUser} />
+                            <FontAwesomeIcon
+                                icon={faUser}
+                            />
 
                             {user.nome}
 
@@ -92,22 +100,37 @@ function ClientNav({ onCartClick, onPromotionClick }) {
                         </button>
 
                         {dropdownOpen && (
-                            <div className={StyleClientNav.dropdown}>
+                            <div
+                                className={
+                                    StyleClientNav.dropdown
+                                }
+                            >
                                 <Link
                                     to="/perfil"
-                                    className={StyleClientNav.dropdownLink}
+                                    className={
+                                        StyleClientNav.dropdownLink
+                                    }
                                     onClick={() =>
-                                        setDropdownOpen(false)
+                                        setDropdownOpen(
+                                            false
+                                        )
                                     }
                                 >
-                                    <FontAwesomeIcon icon={faUser} />
+                                    <FontAwesomeIcon
+                                        icon={faUser}
+                                    />
+
                                     Meu perfil
                                 </Link>
 
                                 <button
                                     type="button"
-                                    onClick={handleLogout}
-                                    className={StyleClientNav.logoutButton}
+                                    onClick={
+                                        handleLogout
+                                    }
+                                    className={
+                                        StyleClientNav.logoutButton
+                                    }
                                 >
                                     Sair
                                 </button>
@@ -118,15 +141,19 @@ function ClientNav({ onCartClick, onPromotionClick }) {
                     <li>
                         <button
                             type="button"
-                            onClick={handleLogin}
-                            className={StyleClientNav.navButton}
+                            onClick={onLoginClick}
+                            className={
+                                StyleClientNav.navButton
+                            }
                         >
-                            <FontAwesomeIcon icon={faUser} />
+                            <FontAwesomeIcon
+                                icon={faUser}
+                            />
+
                             Entrar/Cadastrar
                         </button>
                     </li>
                 )}
-
             </ul>
         </nav>
     );

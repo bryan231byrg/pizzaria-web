@@ -4,17 +4,21 @@
 
 .nav {
     width: 100%;
+    min-height: 58px;
 
     display: flex;
     align-items: center;
 
-    background: transparent;
-    border: none;
-    border-radius: 0;
-    box-shadow: none;
+    background: rgba(20, 20, 20, 0.72);
 
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
 }
 
 
@@ -61,15 +65,16 @@
     position: relative;
 
     width: auto;
-    min-height: 42px;
+
+    min-height: 50px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    gap: 9px;
+    gap: 10px;
 
-    padding: 0 16px;
+    padding: 0 18px;
 
     box-sizing: border-box;
 
@@ -230,6 +235,7 @@
     background-color: rgba(0, 0, 0, 0.88);
 
     border: 1px solid rgba(229, 162, 60, 0.25);
+
     border-radius: 9px;
 
     backdrop-filter: blur(14px);
@@ -269,6 +275,7 @@
 .dropdown a,
 .logoutButton {
     width: 100%;
+
     min-height: 38px;
 
     display: flex;
@@ -336,12 +343,16 @@
 
 @media (max-width: 768px) {
 
+    .nav {
+        min-height: 54px;
+    }
+
     .navList {
         gap: 4px;
     }
 
     .navButton {
-        min-height: 40px;
+        min-height: 46px;
 
         padding: 0 12px;
 
@@ -366,12 +377,16 @@
 
 @media (max-width: 500px) {
 
+    .nav {
+        min-height: 48px;
+    }
+
     .navList {
         gap: 2px;
     }
 
     .navButton {
-        min-height: 36px;
+        min-height: 42px;
 
         padding: 0 7px;
 
