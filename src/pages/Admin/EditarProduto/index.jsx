@@ -4,10 +4,10 @@ import InputForm from "../../../components/molecules/inputForm/";
 import StyleEditarProduto from "./style.module.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
     faPizzaSlice,
-    faXmark
+    faXmark,
+    faChevronDown
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function EditarProduto({
@@ -37,7 +37,6 @@ export default function EditarProduto({
 
     const editProduct = (e) => {
         e.preventDefault();
-
         setErro("");
 
         if (!nome.trim()) {
@@ -62,12 +61,12 @@ export default function EditarProduto({
             const produtosAtualizados = products.map((product) =>
                 Number(product.id) === Number(produto.id)
                     ? {
-                        ...product,
-                        nome: nome,
-                        preco: preco,
-                        categoria: categoria,
-                        file: imagem
-                    }
+                          ...product,
+                          nome: nome,
+                          preco: preco,
+                          categoria: categoria,
+                          file: imagem
+                      }
                     : product
             );
 
@@ -77,7 +76,6 @@ export default function EditarProduto({
             );
 
             setProducts(produtosAtualizados);
-
             onClose();
         };
 
@@ -163,7 +161,11 @@ export default function EditarProduto({
                         />
 
                         {imagemAtual && (
-                            <div className={StyleEditarProduto.preview}>
+                            <div
+                                className={
+                                    StyleEditarProduto.preview
+                                }
+                            >
                                 <span>
                                     Imagem atual
                                 </span>
@@ -181,51 +183,69 @@ export default function EditarProduto({
                             Categoria
                         </label>
 
-                        <select
-                            value={categoria}
-                            onChange={(e) =>
-                                setCategoria(e.target.value)
+                        <div
+                            className={
+                                StyleEditarProduto.selectWrapper
                             }
                         >
-                            <option value="">
-                                Selecione uma categoria
-                            </option>
+                            <select
+                                value={categoria}
+                                onChange={(e) =>
+                                    setCategoria(e.target.value)
+                                }
+                            >
+                                <option
+                                    value=""
+                                    disabled
+                                >
+                                    Selecione uma categoria
+                                </option>
 
-                            <option value="Destaques">
-                                Destaques
-                            </option>
+                                <option value="Destaques">
+                                    Destaques
+                                </option>
 
-                            <option value="Oferta Limitada">
-                                Oferta Limitada
-                            </option>
+                                <option value="Oferta Limitada">
+                                    Oferta Limitada
+                                </option>
 
-                            <option value="Promoções">
-                                Promoções
-                            </option>
+                                <option value="Promoções">
+                                    Promoções
+                                </option>
 
-                            <option value="Pizza Grande">
-                                Pizza Grande
-                            </option>
+                                <option value="Pizza Grande">
+                                    Pizza Grande
+                                </option>
 
-                            <option value="Pizza Pequena">
-                                Pizza Pequena
-                            </option>
+                                <option value="Pizza Pequena">
+                                    Pizza Pequena
+                                </option>
 
-                            <option value="Calzone Grande">
-                                Calzone Grande
-                            </option>
+                                <option value="Calzone Grande">
+                                    Calzone Grande
+                                </option>
 
-                            <option value="Bebidas">
-                                Bebidas
-                            </option>
-                        </select>
+                                <option value="Bebidas">
+                                    Bebidas
+                                </option>
+                            </select>
+
+                            <FontAwesomeIcon
+                                icon={faChevronDown}
+                                className={
+                                    StyleEditarProduto.selectIcon
+                                }
+                            />
+                        </div>
                     </div>
                 </div>
 
                 <div className={StyleEditarProduto.actions}>
                     <button
                         type="button"
-                        className={StyleEditarProduto.btnCancelar}
+                        className={
+                            StyleEditarProduto.btnCancelar
+                        }
                         onClick={onClose}
                     >
                         Cancelar
@@ -233,9 +253,13 @@ export default function EditarProduto({
 
                     <button
                         type="submit"
-                        className={StyleEditarProduto.btnSubmit}
+                        className={
+                            StyleEditarProduto.btnSubmit
+                        }
                     >
-                        <FontAwesomeIcon icon={faPizzaSlice} />
+                        <FontAwesomeIcon
+                            icon={faPizzaSlice}
+                        />
 
                         Salvar alterações
                     </button>

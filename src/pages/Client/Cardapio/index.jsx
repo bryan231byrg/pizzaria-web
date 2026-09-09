@@ -15,7 +15,7 @@ import {
 export default function Cardapio({
     categoria,
     busca,
-    products,
+    products = [],
     setProducts,
     onEdit
 }) {
@@ -69,7 +69,10 @@ export default function Cardapio({
                 {categoriasExibidas.map((item) => (
                     <article key={item.nome}>
                         <h4>
-                            <FontAwesomeIcon icon={item.icon} />
+                            <FontAwesomeIcon
+                                icon={item.icon}
+                            />
+
                             {item.titulo}
                         </h4>
 

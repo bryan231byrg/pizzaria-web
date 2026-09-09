@@ -120,6 +120,58 @@
 }
 
 /* =========================
+   LOGIN
+========================= */
+
+.login {
+    width: 100%;
+    margin-top: 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 5px;
+
+    text-align: center;
+}
+
+.login span {
+    margin: 0;
+
+    color: var(--color-text-secondary);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.login button {
+    padding: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: var(--color-primary);
+
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        color 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.login button:hover {
+    color: var(--color-primary-dark);
+    opacity: 0.8;
+}
+
+/* =========================
    RESPONSIVIDADE
 ========================= */
 
@@ -140,5 +192,14 @@
 
     .header h1 {
         font-size: 30px;
+    }
+
+    .login {
+        margin-top: 14px;
+    }
+
+    .login span,
+    .login button {
+        font-size: 12px;
     }
 }

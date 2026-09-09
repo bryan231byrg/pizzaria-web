@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Header from "../../../components/organism/Header";
 import Cardapio from "../Cardapio";
@@ -17,12 +17,24 @@ export default function Home() {
     const [categoria, setCategoria] = useState("");
     const [busca, setBusca] = useState("");
 
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        const produtosSalvos =
+            JSON.parse(localStorage.getItem("products")) || [];
+
+        setProducts(produtosSalvos);
+    }, []);
+
     return (
         <>
             <Header />
 
             <main>
-                <section id="inicio" className={StyleHome.hero}>
+                <section
+                    id="inicio"
+                    className={StyleHome.hero}
+                >
                     <div className={StyleHome.heroContent}>
                         <div className={StyleHome.logo}>
                             <Logo />
@@ -30,7 +42,9 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section className={StyleHome.restaurantInfo}>
+                <section
+                    className={StyleHome.restaurantInfo}
+                >
                     <h1>Papa's Pizza's | Fortaleza</h1>
 
                     <div className={StyleHome.info}>
@@ -41,52 +55,85 @@ export default function Home() {
                         <span>•</span>
 
                         <span>
-                            <FontAwesomeIcon icon={faLocationDot} />
+                            <FontAwesomeIcon
+                                icon={faLocationDot}
+                            />
                             Fortaleza - CE
                         </span>
                     </div>
                 </section>
 
-                <section className={StyleHome.filters}>
+                <section
+                    className={StyleHome.filters}
+                >
                     <select
                         className={StyleHome.categories}
                         value={categoria}
-                        onChange={(e) => setCategoria(e.target.value)}
+                        onChange={(e) =>
+                            setCategoria(e.target.value)
+                        }
                     >
-                        <option value="">📋 Lista de categorias</option>
-                        <option value="Destaques">⭐ Destaques</option>
+                        <option value="">
+                            📋 Lista de categorias
+                        </option>
+
+                        <option value="Destaques">
+                            ⭐ Destaques
+                        </option>
+
                         <option value="Oferta Limitada">
                             🔥 Oferta Limitada
                         </option>
-                        <option value="Promoções">🏷️ Promoções</option>
-                        <option value="Pizza Grande">🍕 Pizza Grande</option>
-                        <option value="Pizza Pequena">🍕 Pizza Pequena</option>
+
+                        <option value="Promoções">
+                            🏷️ Promoções
+                        </option>
+
+                        <option value="Pizza Grande">
+                            🍕 Pizza Grande
+                        </option>
+
+                        <option value="Pizza Pequena">
+                            🍕 Pizza Pequena
+                        </option>
+
                         <option value="Calzone Grande">
                             🥟 Calzone Grande
                         </option>
-                        <option value="Bebidas">🥤 Bebidas</option>
+
+                        <option value="Bebidas">
+                            🥤 Bebidas
+                        </option>
                     </select>
 
                     <div className={StyleHome.search}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        <FontAwesomeIcon
+                            icon={faMagnifyingGlass}
+                        />
 
                         <input
                             placeholder="Busque por um produto"
                             value={busca}
-                            onChange={(e) => setBusca(e.target.value)}
+                            onChange={(e) =>
+                                setBusca(e.target.value)
+                            }
                         />
                     </div>
                 </section>
 
-                <section id="cardapio" className={StyleHome.Cardapio}>
+                <section
+                    id="cardapio"
+                    className={StyleHome.Cardapio}
+                >
                     <Cardapio
                         categoria={categoria}
                         busca={busca}
+                        products={products}
+                        setProducts={setProducts}
                     />
                 </section>
             </main>
 
-            {/* Footer */}
             <Footer />
         </>
     );

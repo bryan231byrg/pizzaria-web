@@ -1,20 +1,24 @@
 import FormLogin from "../../../components/organism/FormLogin";
+
 import useAuth from "../../../Contexts/AuthContext";
+
 import { useNavigate } from "react-router-dom";
+
 import StyleLogin from "./style.module.css";
 import Logo from "../../../components/atoms/Logo";
 
-function Login() {
+function Login({ onClose, onCadastro }) {
     const navigate = useNavigate();
+
     const { login } = useAuth();
 
     function submitAccess(telefone, senha) {
-        const admin = [ 
+        const admin = [
             {
-            telefone: "85994012630",
-            nome: "Bryan William",
-            senha: "admin1234",
-            tipo: "admin"
+                telefone: "85994012630",
+                nome: "Bryan William",
+                senha: "admin1234",
+                tipo: "admin"
             },
             {
                 telefone: "85987434352",
@@ -25,23 +29,32 @@ function Login() {
         ];
 
         const adminEncontrado = admin.find((a) => {
-            return a.telefone === telefone && a.senha === senha;
-        }); 
+            return (
+                a.telefone === telefone &&
+                a.senha === senha
+            );
+        });
 
         if (adminEncontrado) {
             login(adminEncontrado);
+            onClose();
             navigate("/admin");
             return;
         }
 
-        const users = JSON.parse(localStorage.getItem("users")) || [];
+        const users =
+            JSON.parse(localStorage.getItem("users")) || [];
 
         const usuarioEncontrado = users.find((user) => {
-            return user.telefone === telefone && user.senha === senha;
+            return (
+                user.telefone === telefone &&
+                user.senha === senha
+            );
         });
 
         if (usuarioEncontrado) {
             login(usuarioEncontrado);
+            onClose();
             navigate("/");
             return;
         }
@@ -50,27 +63,31 @@ function Login() {
     }
 
     return (
-    <main className={StyleLogin.main}>
-        <section className={StyleLogin.login}>
+        <main className={StyleLogin.main}>
+            <section className={StyleLogin.login}>
 
-            <div className={StyleLogin.logo}>
-                <Logo />
-            </div>
+                <div className={StyleLogin.logo}>
+                    <Logo />
+                </div>
 
-            <div className={StyleLogin.header}>
-                <h1>Login</h1>
-                <p>
-                    Entre com sua conta para continuar.
-                </p>
-            </div>
+                <div className={StyleLogin.header}>
+                    <h1>Login</h1>
 
-            <div className={StyleLogin.form}>
-                <FormLogin onSubmit={submitAccess} />
-            </div>
+                    <p>
+                        Entre com sua conta para continuar.
+                    </p>
+                </div>
 
-        </section>
-    </main>
-);
+                <div className={StyleLogin.form}>
+                    <FormLogin
+                        onSubmit={submitAccess}
+                        onCadastro={onCadastro}
+                    />
+                </div>
+
+            </section>
+        </main>
+    );
 }
 
 export default Login;
