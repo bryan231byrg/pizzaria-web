@@ -2,6 +2,7 @@ import FormLogin from "../../../components/organism/FormLogin";
 import useAuth from "../../../Contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import StyleLogin from "./style.module.css";
+import Logo from "../../../components/atoms/Logo";
 
 function Login() {
     const navigate = useNavigate();
@@ -49,21 +50,27 @@ function Login() {
     }
 
     return (
-        <main className={StyleLogin.main}>
-            <section className={StyleLogin.login}>
-                <div className={StyleLogin.header}>
-                    <h1>Login</h1>
-                    <p>
-                        Entre com sua conta para continuar.
-                    </p>
-                </div>
+    <main className={StyleLogin.main}>
+        <section className={StyleLogin.login}>
 
-                <div className={StyleLogin.form}>
-                    <FormLogin onSubmit={submitAccess} />
-                </div>
-            </section>
-        </main>
-    );
+            <div className={StyleLogin.logo}>
+                <Logo />
+            </div>
+
+            <div className={StyleLogin.header}>
+                <h1>Login</h1>
+                <p>
+                    Entre com sua conta para continuar.
+                </p>
+            </div>
+
+            <div className={StyleLogin.form}>
+                <FormLogin onSubmit={submitAccess} />
+            </div>
+
+        </section>
+    </main>
+);
 }
 
 export default Login;
