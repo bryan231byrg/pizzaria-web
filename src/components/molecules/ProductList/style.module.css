@@ -1,43 +1,22 @@
 .list {
-width: 100%;
-display: flex;
-flex-wrap: wrap;
-gap: 30px;
-}
-
-/* Cada produto ocupa 3 colunas */
-
-.list > * {
-flex: 1 1 calc(33.333% - 20px);
-max-width: calc(33.333% - 20px);
-box-sizing: border-box;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
 }
 
 /* TABLET */
-
 @media (max-width: 1000px) {
-
-.list {
-    gap: 24px;
-}
-
-.list > * {
-    flex: 1 1 calc(50% - 12px);
-    max-width: calc(50% - 12px);
-}
+    .list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 24px;
+    }
 }
 
 /* CELULAR */
-
 @media (max-width: 600px) {
-
-.list {
-    gap: 20px;
-}
-
-.list > * {
-    flex: 1 1 100%;
-    max-width: 100%;
-}
-
+    .list {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }

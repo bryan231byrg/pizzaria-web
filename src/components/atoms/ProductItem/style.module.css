@@ -6,7 +6,7 @@
     position: relative;
 
     width: 100%;
-    max-width: 270px;
+    max-width: none;
 
     display: flex;
     flex-direction: column;
@@ -64,7 +64,7 @@
 .info {
     width: 100%;
 
-    padding: 11px 13px 6px;
+    padding: 14px 15px 8px;
 
     display: flex;
     flex-direction: column;
@@ -181,6 +181,8 @@
 
 .actions {
     width: 100%;
+    margin-top: auto;
+    padding: 10px 15px 15px;
 
     padding: 7px 13px 12px;
 
@@ -328,11 +330,11 @@
 @media (max-width: 600px) {
 
     .card {
-        max-width: 250px;
+        max-width: none;
     }
 
     .image {
-        height: 145px;
+        height: 175px;
     }
 
     .info {

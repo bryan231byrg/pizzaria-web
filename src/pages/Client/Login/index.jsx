@@ -5,6 +5,7 @@ import useAuth from "../../../Contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 import StyleLogin from "./style.module.css";
+import Logo from "../../../components/atoms/Logo";
 
 function Login({ onClose, onCadastro }) {
     const navigate = useNavigate();
@@ -64,12 +65,26 @@ function Login({ onClose, onCadastro }) {
     return (
         <main className={StyleLogin.main}>
             <section className={StyleLogin.login}>
+
+                <div className={StyleLogin.logo}>
+                    <Logo />
+                </div>
+
+                <div className={StyleLogin.header}>
+                    <h1>Login</h1>
+
+                    <p>
+                        Entre com sua conta para continuar.
+                    </p>
+                </div>
+
                 <div className={StyleLogin.form}>
                     <FormLogin
                         onSubmit={submitAccess}
                         onCadastro={onCadastro}
                     />
                 </div>
+
             </section>
         </main>
     );
