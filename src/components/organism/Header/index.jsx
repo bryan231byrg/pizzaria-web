@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import ClientNav from "../../molecules/ClientNav";
 import AdminNav from "../../molecules/AdminNav";
-import CartSidebar from "../CartSideBar";
 import PromotionList from "../../molecules/PromotionList";
 
 import Login from "../../../pages/Client/Login";
@@ -12,10 +11,9 @@ import useAuth from "../../../Contexts/AuthContext.jsx";
 
 import StyleHeader from "./style.module.css";
 
-function Header() {
+function Header({ onCartClick }) {
     const { user } = useAuth();
 
-    const [cartOpen, setCartOpen] = useState(false);
     const [promotionOpen, setPromotionOpen] = useState(false);
     const [loginOpen, setLoginOpen] = useState(false);
     const [authTela, setAuthTela] = useState("login");
@@ -40,34 +38,19 @@ function Header() {
 
     return (
         <>
-            {/* =========================
-                HEADER / NAVEGAÇÃO
-            ========================= */}
-
             <header className={StyleHeader.header}>
                 {user?.tipo === "admin" ? (
                     <AdminNav />
                 ) : (
                     <ClientNav
-                        onCartClick={() => setCartOpen(true)}
-                        onPromotionClick={() => setPromotionOpen(true)}
+                        onCartClick={onCartClick}
+                        onPromotionClick={() =>
+                            setPromotionOpen(true)
+                        }
                         onLoginClick={abrirLogin}
                     />
                 )}
             </header>
-
-            {/* =========================
-                CARRINHO
-            ========================= */}
-
-            <CartSidebar
-                isOpen={cartOpen}
-                onClose={() => setCartOpen(false)}
-            />
-
-            {/* =========================
-                MODAL DE PROMOÇÕES
-            ========================= */}
 
             {promotionOpen && (
                 <div
@@ -76,9 +59,15 @@ function Header() {
                 >
                     <div
                         className={StyleHeader.modal}
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) =>
+                            e.stopPropagation()
+                        }
                     >
-                        <div className={StyleHeader.modalHeader}>
+                        <div
+                            className={
+                                StyleHeader.modalHeader
+                            }
+                        >
                             <div>
                                 <h2>Promoções</h2>
 
@@ -90,23 +79,25 @@ function Header() {
 
                             <button
                                 type="button"
-                                className={StyleHeader.btnFechar}
+                                className={
+                                    StyleHeader.btnFechar
+                                }
                                 onClick={fecharPromocoes}
                             >
                                 ×
                             </button>
                         </div>
 
-                        <div className={StyleHeader.modalBody}>
+                        <div
+                            className={
+                                StyleHeader.modalBody
+                            }
+                        >
                             <PromotionList />
                         </div>
                     </div>
                 </div>
             )}
-
-            {/* =========================
-                MODAL DE LOGIN / CADASTRO
-            ========================= */}
 
             {loginOpen && (
                 <div
@@ -115,11 +106,15 @@ function Header() {
                 >
                     <div
                         className={`${StyleHeader.modal} ${StyleHeader.authModal}`}
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={(e) =>
+                            e.stopPropagation()
+                        }
                     >
-                        {/* CABEÇALHO */}
-
-                        <div className={StyleHeader.modalHeader}>
+                        <div
+                            className={
+                                StyleHeader.modalHeader
+                            }
+                        >
                             <div>
                                 <h2>
                                     {authTela === "login"
@@ -136,16 +131,20 @@ function Header() {
 
                             <button
                                 type="button"
-                                className={StyleHeader.btnFechar}
+                                className={
+                                    StyleHeader.btnFechar
+                                }
                                 onClick={fecharLogin}
                             >
                                 ×
                             </button>
                         </div>
 
-                        {/* CONTEÚDO */}
-
-                        <div className={StyleHeader.modalBody}>
+                        <div
+                            className={
+                                StyleHeader.modalBody
+                            }
+                        >
                             {authTela === "login" ? (
                                 <Login
                                     onClose={fecharLogin}

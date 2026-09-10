@@ -1,9 +1,7 @@
 import StyleProductItem from "./style.module.css";
-
 import useAuth from "../../../Contexts/AuthContext";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import {
     faTrash,
     faPen,
@@ -102,7 +100,8 @@ export default function ProductItem({
                     ? {
                         ...item,
                         precoAplicado: precoFinal,
-                        quantidade: item.quantidade + 1
+                        quantidade:
+                            Number(item.quantidade) + 1
                     }
                     : item
             );
@@ -120,6 +119,10 @@ export default function ProductItem({
         localStorage.setItem(
             "carrinho",
             JSON.stringify(novoCarrinho)
+        );
+
+        window.dispatchEvent(
+            new Event("carrinhoAtualizado")
         );
     };
 
@@ -150,9 +153,7 @@ export default function ProductItem({
             />
 
             <div className={StyleProductItem.info}>
-                <h2>
-                    {product.nome}
-                </h2>
+                <h2>{product.nome}</h2>
 
                 {promocaoAtiva ? (
                     <div
@@ -190,7 +191,11 @@ export default function ProductItem({
             </div>
 
             {user?.tipo === "admin" ? (
-                <div className={StyleProductItem.actions}>
+                <div
+                    className={
+                        StyleProductItem.actions
+                    }
+                >
                     <button
                         type="button"
                         onClick={editProduct}
@@ -221,7 +226,11 @@ export default function ProductItem({
                     )}
                 </div>
             ) : (
-                <div className={StyleProductItem.actions}>
+                <div
+                    className={
+                        StyleProductItem.actions
+                    }
+                >
                     <button
                         type="button"
                         onClick={addToCarrinho}
