@@ -1,0 +1,86 @@
+.pedidos {
+    min-height: 100vh;
+    padding: 110px 40px 40px;
+    background: #fff8ec;
+}
+
+.pedidos h1 {
+    margin: 0 0 30px;
+    color: #181818;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.lista {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pedido {
+    padding: 24px;
+    background: #ffffff;
+    border: 1px solid #eee;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px #00000012;
+    transition: 0.2s;
+}
+
+.pedido:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px #00000018;
+}
+
+.pedido h2 {
+    margin: 0 0 20px;
+    color: #b52b2b;
+    font-size: 20px;
+}
+
+.pedido p {
+    margin: 10px 0;
+    color: #555;
+    font-size: 15px;
+}
+
+.pedido strong {
+    color: #181818;
+}
+
+.pedido p:nth-last-child(2) {
+    margin-top: 18px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+    font-size: 17px;
+}
+
+.pedido p:last-child {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 7px 12px;
+    border-radius: 20px;
+    background: #e5a23c;
+    color: #181818;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.pedido p:last-child strong {
+    color: #181818;
+}
+
+@media (max-width: 768px) {
+    .pedidos {
+        padding: 100px 20px 30px;
+    }
+
+    .pedidos h1 {
+        font-size: 26px;
+    }
+
+    .lista {
+        grid-template-columns: 1fr;
+    }
+}

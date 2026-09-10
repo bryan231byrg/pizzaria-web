@@ -9,11 +9,12 @@ import FinalizarPedido from "../pages/Client/FinalizarPedido/";
 import Login from "../pages/Client/Login/index.jsx";
 import Cadastro from "../pages/Client/Cadastro/index.jsx";
 import Promocoes from "../pages/Client/Promocoes/index.jsx";
+import Pedidos from "../pages/Client/Pedidos/index.jsx";
 
 // Administrador (Privado)
 import Dashboard from "../pages/admin/Dashboard/";
 import Produtos from "../pages/admin/Produtos/";
-import EditarProduto from "../pages/Admin/EditarProduto/";
+import EditarProduto from "../pages/admin/EditarProduto/";
 import Categorias from "../pages/admin/Categorias/";
 import Configuracoes from "../pages/admin/Configuracoes/";
 
@@ -29,6 +30,7 @@ function AppRoutes() {
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/promocoes" element={<Promocoes />} />
+          <Route path="/pedidos" element={<Pedidos />} />
 
           {/* Rota Privada (Adminitrador) */}~
           <Route element={<PrivateRoute />}>

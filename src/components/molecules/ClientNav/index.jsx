@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import ItemNav from "../../atoms/ItemNav";
 
@@ -18,12 +18,10 @@ import {
 
 import useAuth from "../../../Contexts/AuthContext.jsx";
 
-function ClientNav({
-    onCartClick,
-    onPromotionClick,
-    onLoginClick
-}) {
+function ClientNav({ onPromotionClick,onLoginClick}) {
     const { user, logOut } = useAuth();
+
+    const navigate = useNavigate();
 
     const [dropdownOpen, setDropdownOpen] =
         useState(false);
@@ -56,13 +54,13 @@ function ClientNav({
                 <li>
                     <button
                         type="button"
-                        onClick={onCartClick}
+                        onClick={() => navigate("/pedidos")}
                         className={StyleClientNav.navButton}
                     >
                         <FontAwesomeIcon
                             icon={faCartShopping}
                         />
-                        Carrinho
+                        Pedidos
                     </button>
                 </li>
 
