@@ -1,13 +1,11 @@
 import { useEffect, useState } from "react";
-
 import Header from "../../../components/organism/Header";
 import Cardapio from "../Cardapio";
 import StyleHome from "./style.module.css";
 import Footer from "../../../components/organism/Footer";
-
+import CartSidebar from "../../../components/organism/CartSideBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Logo from "../../../components/atoms/Logo";
-
 import {
     faLocationDot,
     faMagnifyingGlass
@@ -16,7 +14,6 @@ import {
 export default function Home() {
     const [categoria, setCategoria] = useState("");
     const [busca, setBusca] = useState("");
-
     const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -63,9 +60,7 @@ export default function Home() {
                     </div>
                 </section>
 
-                <section
-                    className={StyleHome.filters}
-                >
+                <section className={StyleHome.filters}>
                     <select
                         className={StyleHome.categories}
                         value={categoria}
@@ -123,14 +118,18 @@ export default function Home() {
 
                 <section
                     id="cardapio"
-                    className={StyleHome.Cardapio}
+                    className={StyleHome.content}
                 >
-                    <Cardapio
-                        categoria={categoria}
-                        busca={busca}
-                        products={products}
-                        setProducts={setProducts}
-                    />
+                    <div className={StyleHome.Cardapio}>
+                        <Cardapio
+                            categoria={categoria}
+                            busca={busca}
+                            products={products}
+                            setProducts={setProducts}
+                        />
+                    </div>
+
+                    <CartSidebar />
                 </section>
             </main>
 
