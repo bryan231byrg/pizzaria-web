@@ -16,9 +16,9 @@ export default function AdminNav() {
     const navigate = useNavigate();
 
     function handleLogout() {
-        logOut();
-        setDropdownOpen(false);
         navigate("/", { replace: true });
+        setDropdownOpen(false);
+        logOut();
     }
 
     return (
