@@ -12,11 +12,11 @@ import Promocoes from "../pages/Client/Promocoes/index.jsx";
 import Pedidos from "../pages/Client/Pedidos/index.jsx";
 
 // Administrador (Privado)
-import Dashboard from "../pages/admin/Dashboard/";
-import Produtos from "../pages/admin/Produtos/";
-import EditarProduto from "../pages/admin/EditarProduto/";
-import Categorias from "../pages/admin/Categorias/";
-import Configuracoes from "../pages/admin/Configuracoes/";
+import Dashboard from "../pages/Admin/Dashboard/";
+import Produtos from "../pages/Admin/Produtos/";
+import EditarProduto from "../pages/Admin/EditarProduto/";
+import Categorias from "../pages/Admin/Categorias/";
+import Configuracoes from "../pages/Admin/Configuracoes/";
 
 function AppRoutes() {
   return (
