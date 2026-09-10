@@ -32,10 +32,11 @@
     align-items: center;
 
     background-color: #181818;
-    border: 1px solid rgba(229, 162, 60, 0.35);
-    border-top: 4px solid var(--color-primary);
+    border: none;
+    border-top: none;
+    box-shadow: none;
     border-radius: var(--radius-lg);
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+    
 
     position: relative;
 }

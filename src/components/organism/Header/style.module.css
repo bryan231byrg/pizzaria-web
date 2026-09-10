@@ -72,11 +72,40 @@
 
 .authModal {
     width: 100%;
-    max-width: 420px;
+    max-width: 410px;
+    max-height: 92vh;
 
-    max-height: 90vh;
+    background-color: #181818;
+    border: 1px solid rgba(229, 162, 60, 0.55);
+    border-radius: 18px;
 
-    border-radius: 16px;
+    box-shadow:
+        0 20px 55px rgba(0, 0, 0, 0.45),
+        0 0 0 1px rgba(229, 162, 60, 0.08);
+
+    overflow: hidden;
+}
+
+/* =========================
+   CABEÇALHO DA MODAL DE LOGIN
+========================= */
+
+.authModal .modalHeader {
+    padding: 14px 16px 0;
+
+    background-color: #181818;
+    border-bottom: none;
+}
+
+/* Esconde apenas o título duplicado "Entrar" */
+.authModal .modalHeader h2,
+.authModal .modalHeader p {
+    display: none;
+}
+
+/* Mantém o botão X visível */
+.authModal .modalHeader {
+    justify-content: flex-end;
 }
 
 
@@ -199,6 +228,8 @@
     padding: 20px 24px 24px;
 
     overflow-y: auto;
+
+    background-color: #181818;
 }
 
 
@@ -275,6 +306,75 @@
 .modalBody::-webkit-scrollbar-thumb:hover {
     background-color: rgba(0, 0, 0, 0.3);
 }
+
+/* =========================
+   AJUSTE DO POP-UP DE LOGIN/CADASTRO
+========================= */
+
+.authModal .modalBody {
+    padding: 12px;
+    overflow-y: auto;
+}
+
+/* Remove o formato de página inteira do Login e Cadastro
+   quando eles aparecem dentro do modal */
+
+.authModal .modalBody main {
+    min-height: auto;
+    height: auto;
+    padding: 0;
+    background-image: none;
+    background-color: transparent;
+}
+
+/* Mantém o conteúdo mais compacto e quadrado */
+
+.authModal .modalBody .login,
+.authModal .modalBody .cadastro {
+    width: 100%;
+    max-width: none;
+    min-height: auto;
+    height: auto;
+    margin: 0;
+    padding: 24px 22px 22px;
+    border-radius: 14px;
+    box-shadow: none;
+}
+
+/* Logo menor dentro do pop-up */
+
+.authModal .modalBody .logo {
+    width: 78px;
+    height: 78px;
+    margin-bottom: 14px;
+}
+
+/* Título mais compacto */
+
+.authModal .modalBody .header {
+    margin-bottom: 20px;
+}
+
+.authModal .modalBody .header h1 {
+    font-size: 30px;
+}
+
+.authModal .modalBody .header p {
+    font-size: 12px;
+}
+
+/* Espaçamento dos campos */
+
+.authModal .modalBody .form {
+    width: 100%;
+}
+
+/* Fundo do pop-up mais visível */
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.58);
+}
+
 
 
 /* =========================
@@ -388,5 +488,30 @@
     .modalBody,
     .authModal .modalBody {
         padding: 14px 15px 16px;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .authModal {
+        max-width: 350px;
+    }
+
+    .authModal .modalBody {
+        padding: 8px;
+    }
+
+    .authModal .modalBody .login,
+    .authModal .modalBody .cadastro {
+        padding: 22px 18px 20px;
+    }
+
+    .authModal .modalBody .logo {
+        width: 70px;
+        height: 70px;
+    }
+
+    .authModal .modalBody .header h1 {
+        font-size: 27px;
     }
 }
