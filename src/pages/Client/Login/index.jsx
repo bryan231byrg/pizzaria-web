@@ -37,8 +37,8 @@ function Login({ onClose, onCadastro }) {
 
         if (adminEncontrado) {
             login(adminEncontrado);
-            onClose();
             navigate("/admin");
+            onClose();
             return;
         }
 
